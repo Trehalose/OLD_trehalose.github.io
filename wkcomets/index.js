@@ -319,7 +319,8 @@
 	//When pressing Enter/Return key in textbox
 	$("#textbox").keydown(function(key){
 			if(parseInt(key.which,10)===13){
-				event.preventDefault(); //prevents page from reloading when pressing enter during textbox focus
+				key.preventDefault(); //prevents page from reloading when pressing enter during textbox focus
+				$("#enterAnswer").animate({'background-color':'red', 'border-color':'#990000', 'margin-top':'5px'}, 25).animate({'background-color':'#990000', 'border-color':'#330000', 'margin-top':'0px'}, 50);
 				input = $("#textbox").val(); //records input
 				if(input === ""){
 					$("#textbox").attr("placeholder", "Forgot to enter stuff.");
@@ -354,7 +355,8 @@
 		//When pressing Enter/Return key in textbox
 		$("#apiSlot").keydown(function(key){
 			if(parseInt(key.which,10)===13){
-				event.preventDefault(); //prevents page from reloading when pressing enter during textbox focus
+				key.preventDefault(); //prevents page from reloading when pressing enter during textbox focus
+				$("#apiEnter").animate({'background-color':'red', 'border-color':'#990000', 'margin-top':'5px'}, 25).animate({'background-color':'#990000', 'border-color':'#330000', 'margin-top':'0px'}, 50);
 				userKey = $("#apiSlot").val(); //records input
 				if(userKey === ""){
 					$("#apiSlot").attr("placeholder", "Forgot to enter API key.");
