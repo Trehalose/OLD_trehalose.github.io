@@ -391,7 +391,13 @@
 						else{}
 					}
 					$("#apiSlot").val("Welcome to THE GAME.");
-					alert("Sweet. The API key works. You the boss-man!");
+					if(autoPlayOrBeingGay === false){
+						setCookie("WaniComets API Key", userKey , 7);
+						alert("Sweet. The API key works. You the boss-man!");
+					}
+					else{
+						$("#loading").remove();	
+					}
 					playGame();
 				}
         		},
@@ -434,7 +440,51 @@
 		generateEnemy();
 		$("#textbox").focus();
 	}
-	
-	//Lets start this game, yo!~
-	howToPlay();
+
+	//TODO:	SET, CHECK, AND GET COOKIES
+	function setCookie(cookieName, cookieValue, expirationDays){ //Sets a cookie on your system so that I can hack into your webcam and watch you fap to boku no pico
+		var expirationDate = new Date();
+		expirationDate.setDate(expirationDate.getDate() + expirationDays);
+		var cValue = escape(cookieValue) + ((expirationDays == null) ? "" : "; expires=" + expirationDate.toUTCString());
+		var theNewCookie = cookieName + "=" + cValue;
+		document.cookie = theNewCookie;
+	}
+	function checkCookie(){ //Checks for cookies when opening the page
+		var userKey = getCookie("WaniComets API Key");
+		if((userKey != null) && (userKey != "")){
+			return userKey;
+		}
+		else{
+			return false;
+		}
+	}
+	function getCookie(cookieName){
+		var cookieValue = document.cookie;
+		var cookieStart = cookieValue.indexOf(" " + cookieName + "=");
+		if(cookieStart == -1){
+			cookieValue = null;
+		}
+		else{
+			cookieStart = cookieValue.indexOf("=", cookieStart) + 1;
+			var cookieEnd = cookieValue.indexOf(";", cookieStart);
+			if(cookieEnd == -1){
+				cookieEnd = cookieValue.length;
+			}
+			cookieValue = unescape(cookieValue.substring(cookieStart, cookieEnd));
+		}
+		return cookieValue;
+	}
+	//Check if You have a cookie or a disappointment, if cookie, autoplay, else fill in your api stuff
+	function pregameCheck(){
+		if(autoPlay === false){
+			howToPlay();
+		}
+		else{
+			$("#startArea").hide();
+			$("body").append("<div id='loading'><BR><p>Loading~</p><BR><BR><p>Blame Wanikani's inefficient get-ability</p></div>");
+			collectAPIData("http://www.wanikani.com/api/user/" + autoPlay + "/vocabulary/");
+		}
+	}
+	var autoPlay = checkCookie();
+	pregameCheck();
 });
