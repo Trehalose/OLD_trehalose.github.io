@@ -453,7 +453,7 @@
 	function checkCookie(){ //Checks for cookies when opening the page
 		var userKey = getCookie("WaniComets API Key");
 		if((userKey != null) && (userKey  != "")){
-			return apiKey;
+			return userKey;
 		}
 		else{
 			return false;	
