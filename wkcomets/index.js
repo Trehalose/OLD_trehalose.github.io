@@ -451,7 +451,7 @@
 		console.log(document.cookie);
 	}
 	function checkCookie(){ //Checks for cookies when opening the page
-		var userKey = getCookie("ShokuRain API Key");
+		var userKey = getCookie("WaniComets API Key");
 		if((userKey != null) && (userKey  != "")){
 			return apiKey;
 		}
