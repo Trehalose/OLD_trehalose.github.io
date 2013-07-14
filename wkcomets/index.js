@@ -397,6 +397,7 @@
 					}
 					else{
 						$("#loading").remove();	
+						$("body").css("background-color","#000000");
 					}
 					playGame();
 				}
@@ -447,7 +448,6 @@
 		expirationDate.setDate(expirationDate.getDate() + expirationDays);
 		var cValue=escape(cookieValue) + ((expirationDays==null) ? "" : "; expires="+expirationDate.toUTCString());
 		var theNewCookie= cookieName + "=" + cValue;
-		document.cookie = theNewCookie;
 		console.log(document.cookie);
 	}
 	function checkCookie(){ //Checks for cookies when opening the page
@@ -485,12 +485,12 @@
 		}
 		else{
 			$("#startArea").hide();
+			$("body").css("background-color","#ffffff");
 			$("body").append("<div id='loading'><BR><p>Loading~</p><BR><BR><p>Blame Wanikani's inefficient get-ability</p></div>");
 			collectAPIData("http://www.wanikani.com/api/user/" + autoPlay + "/vocabulary/");
 		}
 	}
 
 	var autoPlay = checkCookie();
-	console.log(autoPlay);
 	pregameCheck();
 });
