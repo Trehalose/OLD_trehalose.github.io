@@ -391,7 +391,7 @@
 						else{}
 					}
 					$("#apiSlot").val("Welcome to THE GAME.");
-					if(autoPlayOrBeingGay === false){
+					if(autoPlay === false){
 						setCookie("WaniComets API Key", userKey , 7);
 						alert("Sweet. The API key works. You the boss-man!");
 					}
