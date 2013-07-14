@@ -441,26 +441,30 @@
 		$("#textbox").focus();
 	}
 
-	//TODO:	SET, CHECK, AND GET COOKIES
+	//SET, CHECK, AND GET COOKIES
 	function setCookie(cookieName, cookieValue, expirationDays){ //Sets a cookie on your system so that I can hack into your webcam and watch you fap to boku no pico
 		var expirationDate = new Date();
 		expirationDate.setDate(expirationDate.getDate() + expirationDays);
-		var cValue = escape(cookieValue) + ((expirationDays == null) ? "" : "; expires=" + expirationDate.toUTCString());
-		var theNewCookie = cookieName + "=" + cValue;
+		var cValue=escape(cookieValue) + ((expirationDays==null) ? "" : "; expires="+expirationDate.toUTCString());
+		var theNewCookie= cookieName + "=" + cValue;
 		document.cookie = theNewCookie;
+		console.log(document.cookie);
 	}
 	function checkCookie(){ //Checks for cookies when opening the page
-		var userKey = getCookie("WaniComets API Key");
-		if((userKey != null) && (userKey != "")){
-			return userKey;
+		var userKey = getCookie("ShokuRain API Key");
+		if((userKey != null) && (userKey  != "")){
+			return apiKey;
 		}
 		else{
-			return false;
+			return false;	
 		}
 	}
 	function getCookie(cookieName){
 		var cookieValue = document.cookie;
 		var cookieStart = cookieValue.indexOf(" " + cookieName + "=");
+		if(cookieStart == -1){
+			cookieStart = cookieValue.indexOf(cookieName + "=");
+		}
 		if(cookieStart == -1){
 			cookieValue = null;
 		}
@@ -485,6 +489,8 @@
 			collectAPIData("http://www.wanikani.com/api/user/" + autoPlay + "/vocabulary/");
 		}
 	}
+
 	var autoPlay = checkCookie();
+	console.log(autoPlay);
 	pregameCheck();
 });
