@@ -349,7 +349,7 @@
 			else{
 				$("#apiSlot").blur();
 				$("#apiSlot").val("ONE MOMENT, PLEASE~");
-				collectAPIData("http://www.wanikani.com/api/user/" + userKey + "/vocabulary/");
+				collectAPIData("http://www.wanikani.com/api/v1.1/user/" + userKey + "/vocabulary/");
 			}
 		});
 		//When pressing Enter/Return key in textbox
@@ -364,7 +364,7 @@
 				else{
 					$("#apiSlot").blur();
 					$("#apiSlot").val("ONE MOMENT, PLEASE~");
-					collectAPIData("http://www.wanikani.com/api/user/" + userKey + "/vocabulary/");
+					collectAPIData("http://www.wanikani.com/api/v1.1/user/" + userKey + "/vocabulary/");
 				}
 			}
 		});	
@@ -487,7 +487,7 @@
 			$("#startArea").hide();
 			$("body").css("background-color","#ffffff");
 			$("body").append("<div id='loading'><BR><p>Loading~</p><BR><BR><p>Blame Wanikani's inefficient get-ability</p></div>");
-			collectAPIData("http://www.wanikani.com/api/user/" + autoPlay + "/vocabulary/");
+			collectAPIData("http://www.wanikani.com/api/v1.1/user/" + autoPlay + "/vocabulary/");
 		}
 	}
 
