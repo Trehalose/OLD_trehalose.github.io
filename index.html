@@ -1,27 +1,361 @@
-��<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html>
-
 	<head>
-
+		<title>Rina the Bane Gits-Er-Done</title>
+		<style>
+			body{
+				background:
+					url('https://41.media.tumblr.com/eddb6333b5d4910710dee7fb7cf29d33/tumblr_n5ag7f7Hzk1tb9zwto4_r1_500.jpg') 50% 0px,
+					#D2B48C;
+				background-repeat: repeat-y, repeat;
+				background-attachment: fixed, fixed;
+				color: #996633;
+			}
+			h1{
+				color: #ffffff;
+				text-align: center;
+				font-size: 35px;
+			}
+			#thePage{
+				width: 700px;
+				/*margin-top: 100px;*/
+				margin: 50px auto 50px auto;
+			}
+			ul{
+				list-style: none;
+				padding: 0px;
+				margin: 0px;
+			}
+			h2{
+				text-align: center;
+			}
+			summary:hover{
+				color: #DD910D;
+			}
+			details p{
+				text-align: right;
+			}
+			.content{
+				background: #FFF9EB;
+				border-radius: 13px;
+				padding: 10PX 25PX 10PX 25PX;
+				min-height: 450px;
+			}
+			.screenshot{
+				background: #ffffff;
+				border: medium solid #CCCCCC;
+				border-radius: 10px;
+				display: inline-block;
+				height: 100px;
+				width: 100px;
+			}
+			.progListItem p{
+				background: #ffffff;
+				position: absolute;
+				display: inline-block;
+				border: medium solid #CCCCCC;
+				border-radius: 0px 25px 25px 0px;
+				width: 510px;
+				margin-left: -1px;
+				padding: 10px;
+			}
+			#selfie{
+				background: url('https://38.media.tumblr.com/b3289a87dd4718c1c59f8d6e4c807fbe/tumblr_n5ag7f7Hzk1tb9zwto5_r1_400.png');
+				background-size: auto 100%;
+				background-repeat: no-repeat;
+				margin-top: 25px;
+				display: inline-block;
+				float: right;
+				height: 400px;
+				width: 250px;
+			}
+			#descript{
+				display: inline-block;
+				background: #ffffff;
+				float: left;
+				border: medium solid #CCCCCC;
+				border-radius: 50px;
+				padding: 10px 10px 20px 10px;
+				width: 300px;
+				margin-top: 25px;
+			}
+			#bblTail{
+				display: inline-block;
+				margin-top: 75px;
+				width: 5px;
+				height: 2px;
+				border: 25px solid transparent;
+				border-left-color: #CCCCCC;
+			}
+			#mainNavMenu{
+				display: inline-block;
+			}
+			#mainNavMenu li{
+				border: medium solid #BC8F8F;
+				background: #CEADAD;
+				background: -webkit-linear-gradient(left, #CEADAD 75%, #ffffff); /* For Safari 5.1 to 6.0 */
+				background: -o-linear-gradient(right, #CEADAD 75%, #ffffff); /* For Opera 11.1 to 12.0 */
+				background: -moz-linear-gradient(right, #CEADAD 75%, #ffffff); /* For Firefox 3.6 to 15 */
+				background: linear-gradient(to right, #CEADAD 75%, #ffffff); /* Standard syntax */
+				border-width: medium 0px medium medium;
+				border-radius: 13px 0px 0px 13px;
+				width: 200px;
+				height: 21px;
+				padding: 15px 0px 15px 0px;
+				text-align: center;
+			}
+			#mainNavMenu li:hover{
+				background: #BC8F8F;
+				color: #ffffff;
+			}
+			#programFilter{
+				position: absolute;
+				display: inline-block;
+				background: #ffffff;
+				border: medium solid #BC8F8F;
+				border-width: medium medium medium 0px;
+				border-radius: 0px 13px 13px 0px;
+				width: 490px;
+				height: 108px;
+			}
+			#programFilter li{
+				display: inline-block;
+				border-radius: 25px;
+				padding: 30px 50px 30px 50px;
+				margin-top: 15px;
+				margin-left: 3px;
+				text-align: center;
+			}
+			#programFilter li:hover{
+				background: #BC8F8F;
+				color: #ffffff;
+			}
+			#contactFilter{
+				position: absolute;
+				display: none;
+				background: #ffffff;
+				border: medium solid #BC8F8F;
+				border-width: medium medium medium 0px;
+				border-radius: 0px 13px 13px 0px;
+				width: 490px;
+				height: 108px;
+			}
+			#contactFilter li{
+				display: inline-block;
+				padding: 45px 6px 45px 6px;
+				border-radius: 25px;
+				margin-right: -15px;
+				margin-left: 10px;
+				text-align: center;
+			}
+			#contactFilter li:hover{
+				background: #BC8F8F;
+				color: #ffffff;
+			}
+			#programsBox{
+				display: block;
+			}
+			#contactBox{
+				display: none;
+			}
+			@keyframes moveBG{
+				from { background-position: 0 0; }
+				to { background-position: 100% 0; }
+			}
+			@-webkit-keyframes moveBG{
+				from { background-position: 0 0; }
+				to { background-position: 100% 0; }
+			}
+			#kanacontrapp .screenshot{
+				background-image: url('https://38.media.tumblr.com/9d2c1bebfeaad10fcddc3bd2d19661c0/tumblr_n8n89ftS961tb9zwto6_250.png');
+				background-size: auto 50%;
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+			}
+			#kanacontrapp .screenshot:hover{
+				background-image: url('https://38.media.tumblr.com/5b87263e6941780a0ac769ef47986815/tumblr_n8n89ftS961tb9zwto1_1280.jpg');
+				background-size: auto 100%;
+				background-position: 0px 0px;
+				background-repeat: repeat-x;
+				-webkit-animation: moveBG 5s linear infinite;
+				animation: moveBG 5s linear infinite;
+			}
+			#shokurain .screenshot{
+				background-image: url('https://31.media.tumblr.com/02cf05dd56b3fc7de58c3a40dba77fcf/tumblr_n8n89ftS961tb9zwto4_400.png');
+				background-size: auto 50%;
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+			}
+			#shokurain .screenshot:hover{
+				background-image: url('https://31.media.tumblr.com/e8f3aebb6e46193e6719a555bfddec0f/tumblr_n8n89ftS961tb9zwto5_1280.jpg');
+				background-size: auto 100%;
+				background-position: 0px 0px;
+				background-repeat: repeat-x;
+				-webkit-animation: moveBG 10s linear infinite;
+				animation: moveBG 10s linear infinite;
+			}
+			#wanicomets .screenshot{
+				background-image: url('https://31.media.tumblr.com/20fb1cf11691a88d2b201dc704a30b07/tumblr_n8n89ftS961tb9zwto3_500.gif');
+				background-size: auto 50%;
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+			}
+			#wanicomets .screenshot:hover{
+				background-image: url('https://31.media.tumblr.com/09689bf285bdb6ad2affcaf6a5460dd8/tumblr_n8n89ftS961tb9zwto2_1280.jpg');
+				background-size: auto 100%;
+				background-position: 0px 0px;
+				background-repeat: repeat-x;
+				-webkit-animation: moveBG 10s linear infinite;
+				animation: moveBG 10s linear infinite;
+			}
+			@keyframes lookColors{
+				0% { color: #DD910D; }
+				25% { color: transparent; }
+				75% { color: #DD910D; }
+			}
+			@-webkit-keyframes lookColors{
+				0% { color: #DD910D; }
+				25% { color: transparent; }
+				75% { color: #DD910D; }
+				100% { color: #DD910D; }
+			}
+			#lookHereDudes{
+				font-size: 25px;
+				padding: 0px;
+				margin: -30px 0px -30px 220px;
+				-webkit-animation: lookColors 1s linear infinite;
+				animation: lookColors 1s ease-in-out infinite;
+			}
+		</style>
+		<script>
+			var mailToggle = false;
+			function navButtons(buttonClicked){
+				switch(buttonClicked){
+					case("programs"):
+						document.getElementById("contactFilter").style.display = "none";
+						document.getElementById("programFilter").style.display = "inline-block";
+						document.getElementById("contactBox").style.display = "none";
+						document.getElementById("programsBox").style.display = "block";
+						break;
+					case("contacts"):
+						document.getElementById("contactFilter").style.display = "inline-block";
+						document.getElementById("programFilter").style.display = "none";
+						document.getElementById("contactBox").style.display = "block";
+						document.getElementById("programsBox").style.display = "none";
+						break;
+					case("progsAll"):
+						document.getElementById("wkProgs").style.display = "block";
+						document.getElementById("otherProgs").style.display = "block";
+						break;
+					case("progsWK"):
+						document.getElementById("wkProgs").style.display = "block";
+						document.getElementById("otherProgs").style.display = "none";
+						break;
+					case("progsOther"):
+						document.getElementById("wkProgs").style.display = "none";
+						document.getElementById("otherProgs").style.display = "block";
+						break;
+					default:
+						break;
+				}
+			}
+			function enterProgItem(event){
+				var theScreenshot = event.target.firstChild.nextSibling.nextSibling.nextSibling;
+				var theDescript = event.target.lastChild.previousSibling;
+				theScreenshot.style.width="200px";
+				theScreenshot.style.height="200px";
+				theScreenshot.style.borderColor="#DD910D";
+				theDescript.style.width="410px";
+				theDescript.style.borderColor="#DD910D";
+			};
+			function leaveProgItem(event){
+				var theScreenshot = event.target.firstChild.nextSibling.nextSibling.nextSibling;
+				var theDescript = event.target.lastChild.previousSibling;
+				theScreenshot.style.width="100px";
+				theScreenshot.style.height="100px";
+				theScreenshot.style.borderColor="#CCCCCC";
+				theDescript.style.width="510px";
+				theDescript.style.borderColor="#CCCCCC";
+			};		</script>
 	</head>
 
 	<body>
-
-		<P>Maybe later I'll do something with this. <br>For now, have some links. <br><br></P>
-
-		<a href="http://trehalose.github.io/wkcomets/"> Wanikani API-Testing Mini Web-game: Wani Comets (Best on Google Chrome)</a>
-
-		<br>
-
-		<a href="http://trehalose.github.io/shokurain/"> Another Wanikani API Mini Web-game: ShokuߘRain (Best on Google Chrome)</a>
-
-		<br>
-
-		<a href="https://github.com/Trehalose/kcgame/archive/master.zip">The Kana ContrAPPtion XNA game .ZIP (Windows OS only((pre-Win8, XNA and Win8 don't get along yet)), sorry)</a>
-
-		<br>
-
+		<section id="thePage">
+			<h1><strong>Rina the Bane <em>Git</em>s-er-done</strong></h1>
+			<nav>
+				<ul id="mainNavMenu">
+					<li onclick="navButtons('programs')"><strong>Programs</strong></li>
+					<li onclick="navButtons('contacts')"><strong>Contact</strong></li>
+				</ul>
+				<ul id="programFilter">
+					<li onclick="navButtons('progsAll')">All</li>
+					<li onclick="navButtons('progsWK')">Wanikani API Stuff</li>
+					<li onclick="navButtons('progsOther')">Other</li>
+				</ul>
+				<ul id="contactFilter">
+					<li onclick="window.location.assign('https://github.com/Trehalose')">Github</li>
+					<li onclick="window.location.assign('http://thegreatyonr.deviantart.com/')">Deviantart</li>
+					<li onclick="window.location.assign('https://www.youtube.com/user/TheRinaissanceMan/')">Youtube</li>
+					<li onclick="window.location.assign('https://soundcloud.com/thegreatyonr')">Soundcloud</li>
+					<li onclick="window.location.assign('http://therinaissance.tumblr.com')">Project Blog</li>
+					<li onclick="window.location.assign('https://twitter.com/TheGreatYonR')">Twitter</li>
+					<li onclick="window.location.assign('https://plus.google.com/u/2/117581694794631593071/posts')">Google+</li>
+				</ul>
+			</nav>
+			<div id="programsBox" class="content">
+				<ul>
+					<li id="wkProgs">
+						<h2>Wanikani API Thingies!</h2>
+						<ul>
+							<li id="wanicomets" class="progListItem" onmouseenter="enterProgItem(event)" onmouseleave="leaveProgItem(event)" onclick="window.location.assign('http://trehalose.github.io/wkcomets/')">
+								<h3>WaniComets</h3>
+								<div class="screenshot"></div>
+								<p>
+									A browser mini-game styled review-system using the Wanikani API and mascot. Guess vocabulary meaning and readings for as long as you can or die trying! <br><strong>Click to check it out!~</strong>
+								</p>
+							</li>
+							<li id="shokurain" class="progListItem" onmouseenter="enterProgItem(event)" onmouseleave="leaveProgItem(event)" onclick="window.location.assign('http://trehalose.github.io/shokurain/')">
+								<h3>Shoku食Rain</h3>
+								<div class="screenshot"></div>
+								<p>
+									A browser mini-game styled review-system using the Wanikani API and mascot. Catch food for the insatiably hungry kaijuu, or quickly starve your belly and morale. <br><strong>Click to check it out!~</strong>
+								</p>
+							</li>
+						</ul>
+					</li>
+					<li id="otherProgs">
+						<h2>Other~</h2>
+						<ul>
+							<li id="kanacontrapp" class="progListItem" onmouseenter="enterProgItem(event)" onmouseleave="leaveProgItem(event)" onclick="window.location.assign('https://github.com/Trehalose/kcgame/archive/master.zip')">
+								<h3>The Kana ContrAPPtion</h3>
+								<div class="screenshot"></div>
+								<p>
+									XNA-Developed block-matching game to help users practice Japanese kana. <em>Development was cut short, and is in permanent beta.</em> <br><strong>Click to Download the ZIP!~</strong>
+								</p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div id="contactBox" class="content">
+				<div id="lookHereDudes"><p><strong>↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑</strong></p></div>
+				<div id="descript">
+					<h3>Greetings!~ Rina the Bane here...</h3>
+					<details>
+						<summary>I fancy myself a polymath.</summary>
+						<p><em>That's a smarty-pants word for someone with a lot of skill-sets and interests.</em><p>
+					</details>
+					<p>Because of that, I have a lot of stuff I like to do and a lot of places to reach me at. If something I do interests you, go ahead and give me a holla', よ!~</p>
+					<details>
+						<summary><strong>Be Warned Though...</strong></summary>
+						<p><em>I'm phat and sassy, so that could mean trouble!</em></p>
+					</details>
+				</div>
+				<div id="bblTail"></div>
+				<div id="selfie"></div>
+			</div>
+		</section>
 	</body>
 
 </html>
+
