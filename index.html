@@ -127,7 +127,7 @@
 				text-align: center;
 			}
 			#programFilter li:hover{
-				background: #BC8F8F;
+				background: #CEADAD;
 				color: #ffffff;
 			}
 			#contactFilter{
@@ -149,7 +149,7 @@
 				text-align: center;
 			}
 			#contactFilter li:hover{
-				background: #BC8F8F;
+				background: #CEADAD;
 				color: #ffffff;
 			}
 			#programsBox{
@@ -227,56 +227,6 @@
 				animation: lookColors 1s ease-in-out infinite;
 			}
 		</style>
-		<script>
-			var mailToggle = false;
-			function navButtons(buttonClicked){
-				switch(buttonClicked){
-					case("programs"):
-						document.getElementById("contactFilter").style.display = "none";
-						document.getElementById("programFilter").style.display = "inline-block";
-						document.getElementById("contactBox").style.display = "none";
-						document.getElementById("programsBox").style.display = "block";
-						break;
-					case("contacts"):
-						document.getElementById("contactFilter").style.display = "inline-block";
-						document.getElementById("programFilter").style.display = "none";
-						document.getElementById("contactBox").style.display = "block";
-						document.getElementById("programsBox").style.display = "none";
-						break;
-					case("progsAll"):
-						document.getElementById("wkProgs").style.display = "block";
-						document.getElementById("otherProgs").style.display = "block";
-						break;
-					case("progsWK"):
-						document.getElementById("wkProgs").style.display = "block";
-						document.getElementById("otherProgs").style.display = "none";
-						break;
-					case("progsOther"):
-						document.getElementById("wkProgs").style.display = "none";
-						document.getElementById("otherProgs").style.display = "block";
-						break;
-					default:
-						break;
-				}
-			}
-			function enterProgItem(event){
-				var theScreenshot = event.target.firstChild.nextSibling.nextSibling.nextSibling;
-				var theDescript = event.target.lastChild.previousSibling;
-				theScreenshot.style.width="200px";
-				theScreenshot.style.height="200px";
-				theScreenshot.style.borderColor="#DD910D";
-				theDescript.style.width="410px";
-				theDescript.style.borderColor="#DD910D";
-			};
-			function leaveProgItem(event){
-				var theScreenshot = event.target.firstChild.nextSibling.nextSibling.nextSibling;
-				var theDescript = event.target.lastChild.previousSibling;
-				theScreenshot.style.width="100px";
-				theScreenshot.style.height="100px";
-				theScreenshot.style.borderColor="#CCCCCC";
-				theDescript.style.width="510px";
-				theDescript.style.borderColor="#CCCCCC";
-			};		</script>
 	</head>
 
 	<body>
@@ -355,6 +305,103 @@
 				<div id="selfie"></div>
 			</div>
 		</section>
+		
+		<script>
+			function navButtons(buttonClicked){
+				switch(buttonClicked){
+					case("programs"):
+						mainMenuSel = "progs";
+						checkCurrentSelections();
+						document.getElementById("contactFilter").style.display = "none";
+						document.getElementById("programFilter").style.display = "inline-block";
+						document.getElementById("contactBox").style.display = "none";
+						document.getElementById("programsBox").style.display = "block";
+						break;
+					case("contacts"):
+						mainMenuSel = "conts";
+						checkCurrentSelections();
+						document.getElementById("contactFilter").style.display = "inline-block";
+						document.getElementById("programFilter").style.display = "none";
+						document.getElementById("contactBox").style.display = "block";
+						document.getElementById("programsBox").style.display = "none";
+						break;
+					case("progsAll"):
+						progsMenuSel = "allapp";
+						checkCurrentSelections();
+						document.getElementById("wkProgs").style.display = "block";
+						document.getElementById("otherProgs").style.display = "block";
+						break;
+					case("progsWK"):
+						progsMenuSel = "wkapp";
+						checkCurrentSelections();
+						document.getElementById("wkProgs").style.display = "block";
+						document.getElementById("otherProgs").style.display = "none";
+						break;
+					case("progsOther"):
+						progsMenuSel = "otherapp";
+						checkCurrentSelections();
+						document.getElementById("wkProgs").style.display = "none";
+						document.getElementById("otherProgs").style.display = "block";
+						break;
+					default:
+						break;
+				}
+			}
+			function enterProgItem(event){
+				var theScreenshot = event.target.firstChild.nextSibling.nextSibling.nextSibling;
+				var theDescript = event.target.lastChild.previousSibling;
+				theScreenshot.style.width="200px";
+				theScreenshot.style.height="200px";
+				theScreenshot.style.borderColor="#DD910D";
+				theDescript.style.width="410px";
+				theDescript.style.borderColor="#DD910D";
+			};
+			function leaveProgItem(event){
+				var theScreenshot = event.target.firstChild.nextSibling.nextSibling.nextSibling;
+				var theDescript = event.target.lastChild.previousSibling;
+				theScreenshot.style.width="100px";
+				theScreenshot.style.height="100px";
+				theScreenshot.style.borderColor="#CCCCCC";
+				theDescript.style.width="510px";
+				theDescript.style.borderColor="#CCCCCC";
+			};
+			var mainMenuSel = "progs"; //or conts
+			var progsMenuSel = "allapp"; //or wkapp or otherapp
+			function checkCurrentSelections(){
+				switch(mainMenuSel){
+					case("progs"):
+						document.getElementById('mainNavMenu').firstChild.nextSibling.style.color = "#FFFFFF";
+						document.getElementById('mainNavMenu').lastChild.previousSibling.style.color = "#996633";
+						break;
+					case("conts"):
+						document.getElementById('mainNavMenu').lastChild.previousSibling.style.color = "#FFFFFF";
+						document.getElementById('mainNavMenu').firstChild.nextSibling.style.color = "#996633";
+						break;
+					default:
+						break;
+				}
+				switch(progsMenuSel){
+					case("allapp"):
+						document.getElementById('programFilter').firstChild.nextSibling.style.color = "#FACC2E";
+						document.getElementById('programFilter').firstChild.nextSibling.nextSibling.nextSibling.style.color = "#996633";
+						document.getElementById('programFilter').lastChild.previousSibling.style.color = "#996633";
+						break;
+					case("wkapp"):
+						document.getElementById('programFilter').firstChild.nextSibling.nextSibling.nextSibling.style.color = "#FACC2E";
+						document.getElementById('programFilter').firstChild.nextSibling.style.color = "#996633";
+						document.getElementById('programFilter').lastChild.previousSibling.style.color = "#996633";
+						break;
+					case("otherapp"):
+						document.getElementById('programFilter').lastChild.previousSibling.style.color = "#FACC2E";
+						document.getElementById('programFilter').firstChild.nextSibling.nextSibling.nextSibling.style.color = "#996633";
+						document.getElementById('programFilter').firstChild.nextSibling.style.color = "#996633";
+						break;
+					default:
+						break;
+				}
+			}
+			checkCurrentSelections();
+		</script>
 	</body>
 
 </html>
