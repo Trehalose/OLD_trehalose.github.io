@@ -103,13 +103,25 @@
 				display: inline-block;
 				padding: 0px 5px;
 			}
-			#clearButton{
+			#theClearButtons{
 				display: inline-block;
-				padding: 125px 0px;
+				vertical-align: top;
+				text-align: center;
+			}
+			#clearStrokesButton{
+				padding: 39px 0px;
+				width: 75px;
+				vertical-align: top;
+			}
+			#clearHintButton{
+				padding: 39px 0px;
+				width: 75px;
 				vertical-align: top;
 			}
 			#newButton{
 				display: inline-block;
+				width: 75px;
+				text-align: center;
 				padding: 125px 0px;
 				vertical-align: top;
 			}
@@ -159,7 +171,7 @@
 			}
 /*ASIDE STUFF*/
 		</style>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 		
 		
 	</head>
@@ -229,7 +241,10 @@
 				<li name="level" value="50" onclick="clickLevel(this);">50</li>
 			</ul>
 			<section>
-				<div class="disabled" id="clearButton"><p>CLEAR</p></div>
+				<div id="theClearButtons">
+					<div class="disabled" id="clearStrokesButton"><p>CLEAR<br>STROKES</p></div>
+					<div class="disabled" id="clearHintButton"><p>CLEAR<br>HINT</p></div>
+				</div>
 				<canvas id="datcanvass" width="300" height="300">In its current state, your browser doesn't seem to support HTML5 the "canvas" tag.<br>Perhaps it is time for an update. 'Canvas' is essential for this operation. </canvas>
 				<div class="disabled" id="newButton"><p>NEW</p></div>
 			</section>
@@ -270,6 +285,7 @@
 			var mouseX = 0;
 			var mouseY = 0;
 			var isDrawing = false;
+			var showHint = true;
 			
 //CANVAS STUFF
 			function clearScreen(){	//clears the Canvas, nice and clean! <3
@@ -279,9 +295,14 @@
 				clearScreen();
 				ctx.font = 'bold 250px sans-serif';
 				ctx.fillStyle = 'rgba(0,0,0,.12)';
-				ctx.fillText(currentKanji.character,25,240);
+				if(showHint === true){
+					ctx.fillText(currentKanji.character,25,240);
+					document.getElementById("thisKanji").innerHTML = currentKanji.character;
+				}
+				else{
+					document.getElementById("thisKanji").innerHTML = "...";
+				}
 				//TODO: MODIFY ARTICLE CONTENTS WITH MEANINGS AND READINGS
-				document.getElementById("thisKanji").innerHTML = currentKanji.character;
 				document.getElementById("thisMeaning").innerHTML = currentKanji.meaning;
 				if(currentKanji.onyomi === null){
 					document.getElementById("thisOnyomi").innerHTML = "n/a";
@@ -311,10 +332,16 @@
 					document.getElementById("newButton").classList.add("buttonClicked");
 				}
 			}
-			document.getElementById("clearButton").onmousedown = function(){
-				if(document.getElementById("clearButton").classList.contains("buttonNormal")){
-					document.getElementById("clearButton").classList.remove("buttonNormal");
-					document.getElementById("clearButton").classList.add("buttonClicked");
+			document.getElementById("clearStrokesButton").onmousedown = function(){
+				if(document.getElementById("clearStrokesButton").classList.contains("buttonNormal")){
+					document.getElementById("clearStrokesButton").classList.remove("buttonNormal");
+					document.getElementById("clearStrokesButton").classList.add("buttonClicked");
+				}
+			}
+			document.getElementById("clearHintButton").onmousedown = function(){
+				if(document.getElementById("clearHintButton").classList.contains("buttonNormal")){
+					document.getElementById("clearHintButton").classList.remove("buttonNormal");
+					document.getElementById("clearHintButton").classList.add("buttonClicked");
 				}
 			}
 			document.getElementById("inputButton").onmousedown = function(){
@@ -333,13 +360,29 @@
 					}
 				}
 			};
-			document.getElementById("clearButton").onmouseup = function(){
-				if(document.getElementById("clearButton").classList.contains("disabled")){}
+			document.getElementById("clearStrokesButton").onmouseup = function(){
+				if(document.getElementById("clearStrokesButton").classList.contains("disabled")){}
 				else{
 					postCurrent();
-					if(document.getElementById("clearButton").classList.contains("buttonClicked")){
-						document.getElementById("clearButton").classList.add("buttonNormal");
-						document.getElementById("clearButton").classList.remove("buttonClicked");
+					if(document.getElementById("clearStrokesButton").classList.contains("buttonClicked")){
+						document.getElementById("clearStrokesButton").classList.add("buttonNormal");
+						document.getElementById("clearStrokesButton").classList.remove("buttonClicked");
+					}
+				}
+			};
+			document.getElementById("clearHintButton").onmouseup = function(){
+				if(document.getElementById("clearHintButton").classList.contains("disabled")){}
+				else{
+					if(showHint === true){
+						showHint = false;
+					}
+					else{
+						showHint = true;
+					}
+					postCurrent();
+					if(document.getElementById("clearHintButton").classList.contains("buttonClicked")){
+						document.getElementById("clearHintButton").classList.add("buttonNormal");
+						document.getElementById("clearHintButton").classList.remove("buttonClicked");
 					}
 				}
 			};
@@ -451,9 +494,11 @@
 								kanji.push(tempKanjiObj);
 							}
 							document.getElementById("newButton").classList.add("buttonNormal");
-							document.getElementById("clearButton").classList.add("buttonNormal");
+							document.getElementById("clearStrokesButton").classList.add("buttonNormal");
+							document.getElementById("clearHintButton").classList.add("buttonNormal");
 							document.getElementById("newButton").classList.remove("disabled");
-							document.getElementById("clearButton").classList.remove("disabled");
+							document.getElementById("clearStrokesButton").classList.remove("disabled");
+							document.getElementById("clearHintButton").classList.remove("disabled");
 							document.getElementById("options").classList.remove("disabled");
 							for(var j = 0; j<document.getElementById("options").childNodes.length; j++){
 								if((document.getElementById("options").childNodes[j].value)<=userLVL){
