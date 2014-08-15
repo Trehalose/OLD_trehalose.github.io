@@ -14,12 +14,21 @@ window.addEventListener('DOMContentLoaded', function() {
 							  navigator.msGetUserMedia;
 
 	var video = document.querySelector('video');
+	var URL = window.URL || window.webkitURL;
+	var createObjectURL = URL.createObjectURL || webkitURL.createObjectURL;
+	if (!createObjectURL) {
+	  throw new Error("URL.createObjectURL not found.");
+	}
 		//If getUserMedia is in browser... or else
 	if (navigator.getUserMedia) {
 	  navigator.getUserMedia({video: true}, function(stream) {
-		video.src = window.URL.createObjectURL(stream);
-	  }, errorCallback);
-	} else {
+		video.src = createObjectURL(stream);
+	  }, function(error) {
+			alert("Couldn't access webcam.");
+			}
+		);
+	}
+	else {
 		alert("Your browser does not support the 'getUserMedia' feature. I suggest using Chrome Beta or Chrome Canary");
 	}
 	//DRAW VIDEO FRAMES TO THE CANVAS, because canvas is BOSS in html5. Canvas is my homie, yo!
