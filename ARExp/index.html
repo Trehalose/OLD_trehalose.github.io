@@ -1,28 +1,23 @@
-﻿
-<!DOCTYPE html>
-<html lang='en'>
+﻿<!DOCTYPE html>
+<html>
 <head>
-	<meta charset='utf-8' />
-	<title>AR BROWSER WINDOW TEST</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name='viewport' content='width=device-width, initial-scale=.75, minimum-scale=.1, maximum-scale=1, user-scalable=no'>
+<title>Browser AR Experiment Proto</title>
 	<style>
-		body {
+		body{
 			margin: 0px;
 			padding: 0px;
-			width: 640px;
-			height: 480px;
-			color:#fff;
-			background-color:#000;
 		}
-		video { 
-			position:absolute;
-			visibility:hidden;
+		video{
+			position: absolute;
+			visibility: hidden;
 		}
 	</style>
-	<script src='index.js'></script>
+
 </head>
 <body>
-	<video id='vid'></video>	
-	<canvas id='datCanvass' width="640" height="480"></canvas>
+  <video id="vid" autoplay></video>
+  <canvas id="datCanvass" width="640" height="480"></canvas>
+  <script src='index.js'></script>
 </body>
 </html>

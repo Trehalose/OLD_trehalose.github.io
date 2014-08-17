@@ -1,45 +1,67 @@
-﻿(function() {	//Not sure what this is supposed to do, but without it don't function so swell
-	//When this document loads
-	window.addEventListener('DOMContentLoaded', function() {
-		var vid = document.getElementById('vid');	//our video
-		var datCanvass = document.getElementById('datCanvass');	//our canvas element (where the magic tends to happen
-		var ctx = datCanvass.getContext('2d');	//more canvas stuff, stuff that processes things to be drawn
-		var w = 640;	//video resolution stuff
-		var h = 480;	//ditto
-		
-		var constraints = {	//variable to alter when i figure out how to access specific cameras for mobile devices
-			video: true,	//yes beedeyo
-			audio:false	//no audio
-		};
-		function successCallback(stream) {	//When the media-call is a WIN
-			var url = window.URL || window.webkitURL;	//I have no idea what this does, but it is necessary for streaming from cam.
-			vid.src = url ? url.createObjectURL(stream) : stream;	//Set the video's source(the video). Not sure about this specific code in it though. It's foreign to source linking that I'm used to, but necessary for streaming from cam.
-			// Set the video to play
-			vid.play();
-		}
-		function errorCallback(error) {	//When the media call is a LOSE
-			alert("Could not access your camera for some reason.");
-			return;
-		}
+﻿//TODO SET TO CANVAS CONTAINER
 
-		//For allowing the getUserMedia call to be a cross-browser experience
-		navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
-		if (navigator.getUserMedia) {
-			navigator.getUserMedia(constraints, successCallback, errorCallback);	//The magic call for accessing getUserMedia. Counts as a cross-domain call and as such does not work so-good on LOCAL.
-		}
-		else {
-			alert('Sorry, the browser you use is inferior. Update and assimilate');	//If you have a camera but your browser is not up to my personal standards of being able to handle me
-			return;
-		}
+//WHEN THE WEBSITE LOADS... DO ALL THIS JUNK
+document.addEventListener('DOMContentLoaded',function(){
+	var videoElement = document.getElementById("vid");	//Our page's video source
+	var datCanvass = document.getElementById("datCanvass");
+	var ctx = datCanvass.getContext("2d");
+    var w = 0;
+    var h = 0;
+    datCanvass.width = w;
+    datCanvass.height = h;
+	
+	vid.addEventListener('play', function() {
+	   // Every 33 milliseconds copy the video image to the canvas
+	   setInterval(function() {
+			if (vid.paused || vid.ended) return;
+			w = vid.videoWidth;
+			h = vid.videoHeight;
+			datCanvass.width = w;
+			datCanvass.height = h;
+			ctx.fillRect(0, 0, w, h);
+			ctx.drawImage(vid, 0, 0, w, h);
+	   }, 33);
+	}, false);
 
-		// When the video plays(should be on auto in markup, 	TODO: if not, fix later)
-		vid.addEventListener('play', function() {
-			// Every 24 milliseconds copy the video image to the canvas
-			setInterval(function() {
-				ctx.fillRect(0, 0, w, h);	//DRAW A RECTANGLE ON CANVAS TO BE FANCY IF THE VIDEO ISNT THERE
-				ctx.drawImage(vid, 0, 0, w, h);	//DRAW THE VIDEO ON CANVAS TO BE FANCY IF THE VIDEO IS THERE
-			}, 24);
-		}, false);	//FALSE, like everything we thought we believed.
-		
-	})
-})();
+	//Get media devices from all the browsers
+	navigator.getUserMedia = navigator.getUserMedia ||
+	  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+	function absorbAllTheSources(sourceInfos) {	//Get source data from devices
+		  var videoSource = null;
+		  for (var i = 0; i != sourceInfos.length; ++i) {	//loop through all sources, settle on last video source
+			var sourceInfo = sourceInfos[i];
+			if (sourceInfo.kind === 'video') {
+			  videoSource = sourceInfo.id;
+			}
+		  }
+		  sourceSelected(videoSource);
+	}
+	function sourceSelected(videoSource) {	//set video source to be recorded from. SNEAKY!!
+	  var constraints = {
+		audio: false,
+		video: {
+		  optional: [{sourceId: videoSource}]
+		}
+	  };
+
+	  navigator.getUserMedia(constraints, successCallback, errorCallback);
+	}
+
+	if (typeof MediaStreamTrack === 'undefined'){
+		alert('Sorry, the browser you use is inferior. Update and assimilate');	//If you have a camera but your browser is not up to my personal standards of being able to handle me
+	}
+	else {
+		MediaStreamTrack.getSources(absorbAllTheSources);
+	}
+
+
+	function successCallback(stream) {	//When the media call is a WIN
+	  window.stream = stream;
+	  videoElement.src = window.URL.createObjectURL(stream);
+	  videoElement.play();
+	}
+
+	function errorCallback(error){	//When the media call is a LOSE
+		alert("Could not access your camera for some reason.");
+	}
+});
