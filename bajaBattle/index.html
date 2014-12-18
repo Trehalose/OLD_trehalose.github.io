@@ -10,6 +10,11 @@
 			padding: 0;
 			overflow: hidden;
 			background-color: #000000;
+			position:fixed;
+			top:0;
+			bottom:0;
+			left:0;
+			right:0;
 		}
 		#gameContainer{
 			width: 800px;
@@ -126,7 +131,6 @@
 				e.preventDefault();
 			}, false);
 			document.getElementById("Z").addEventListener('touchstart', function(e){
-				alert("pressed Z");
 				game.keyDown(90);
 				e.preventDefault();
 			}, false);
@@ -137,7 +141,7 @@
 
 		}
 		else{
-			console.log("updated6");
+			console.log("updated7");
 			//Listen for keyboard things.... NOT BUTT THINGS... well... maybe sometimes butt things
 			window.addEventListener("keydown", function keydown(e){
 				var keycode = e.which || window.event.keycode;
