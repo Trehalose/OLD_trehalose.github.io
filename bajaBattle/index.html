@@ -13,13 +13,39 @@
 		}
 		#gameContainer{
 			width: 800px;
-			margin-left: auto;
-			margin-right: auto;
+			position: fixed;
+			left: 160px;
+		}
+		.button{
+			width: 150px;
+			height: 290px;
+			background-color: #ffffff;
+			border: 5px solid #000000;
+			text-align: center;
+			vertical-align: middle;
+			font-size: 150px;
+			
+		}
+		#left{
+			top: 300px;
+			border-radius: 25px 0px 0px 25px;
+		}
+		#right{
+			top: 300px;
+			left: 960px;
+			border-radius: 0px 25px 25px 0px;
+		}
+		#Z{
+			border-radius: 25px 0px 0px 25px;
+		}
+		#X{
+			left: 960px;
+			border-radius: 0px 25px 25px 0px;
 		}
 		div{
-			width:200px;
-			height: 200px;
-			background-color:#ff0000;
+			position: fixed;
+			width:0px;
+			height: 0px;
 		}
 	</style>
 </head>
@@ -38,11 +64,32 @@
 			return false;
 		}
 		if(isTouchSupported()){
-			alert("yes!");
+			//TODO ADD TOUCH KEYS LATER....
+			/*var leftButton = document.createElement("div");
+			leftButton.innerHTML = "<strong>&lt;</strong>";
+			leftButton.classList.add("button");
+			leftButton.id = "left";
+			document.body.appendChild(leftButton);
+			
+			var xButton = document.createElement("div");
+			xButton.innerHTML = "X";
+			xButton.classList.add("button");
+			xButton.id = "X";
+			document.body.appendChild(xButton);
+			
+			var rightButton = document.createElement("div");
+			rightButton.innerHTML = "<strong>&gt;</strong>";
+			rightButton.classList.add("button");
+			rightButton.id = "right";
+			document.body.appendChild(rightButton);
+			
+			var zButton = document.createElement("div");
+			zButton.innerHTML = "Z";
+			zButton.classList.add("button");
+			zButton.id = "Z";
+			document.body.appendChild(zButton);*/
 		}
-		else{
-			alert("nope");
-		}
+		else{}
 	</script>
 	<script src="js/tacopayers.js"></script>
 	<script>
@@ -69,7 +116,6 @@
 			var keycode = e.which || window.event.keycode;
 			game.keyUp(keycode);
 		});
-		
 	</script>
 </body>
 </html>
