@@ -175,10 +175,11 @@ WelcomeState.prototype.draw = function(game, dt, ctx){	//TODO: CHANGE WHEN ADDIN
 	ctx.strokeRect((game.width/2)-90, (game.height/2)-25, 170, 45);
 	ctx.fillText("Press 'Z' to start, よ。", game.width/2, game.height/2);
 	ctx.font="13px Arial";
-	ctx.fillText("*Due to the weird amount of interest in our battle-game. I made a quick version", game.width/2, game.height*2/3);
-	ctx.fillText(" everyone else can play too! It is basically a Space Invaders rip-off.", game.width/2, (game.height*2/3)+20);
-	ctx.fillText(" Enjoy the fun of shooting dolla-dolla billz and soda with tacos and more money.", game.width/2, (game.height*2/3)+40);
-	ctx.fillText(" Happy holidays for all you dudes!", game.width/2, (game.height*2/3)+60);
+	ctx.fillText("*Due to the weird amount of interest in our battle-game, I made a quick version", game.width/2, game.height*2/3);
+	ctx.fillText(" that everyone else can play too! It's basically a Space Invaders rip-off.", game.width/2, (game.height*2/3)+20);
+	ctx.fillText(" It is still a little glitchy, and in never-to-be-finished mode. But even so,", game.width/2, (game.height*2/3)+40);
+	ctx.fillText(" enjoy the fun of shooting dolla-dolla billz and soda with tacos and more money.", game.width/2, (game.height*2/3)+60);
+	ctx.fillText(" Happy holidays for all you dudes!", game.width/2, (game.height*2/3)+80);
 };
 //for when the user presses button to start the game.
 WelcomeState.prototype.keyDown = function(game, keyCode){
