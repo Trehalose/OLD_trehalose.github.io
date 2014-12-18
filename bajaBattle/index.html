@@ -33,10 +33,15 @@
 			var generalTouchEnabled = "ontouchstart" in document.createElement("div");
 		 
 			if (msTouchEnabled || generalTouchEnabled) {
-				alert("AAAAAAAAAAA");
 				return true;
 			}
 			return false;
+		}
+		if(isTouchSupported()){
+			alert("yes!");
+		}
+		else{
+			alert("nope");
 		}
 	</script>
 	<script src="js/tacopayers.js"></script>
