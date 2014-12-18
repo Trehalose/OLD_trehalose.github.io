@@ -105,11 +105,11 @@
 			zButton.id = "Z";
 			document.body.appendChild(zButton);
 			
-			var pButton = document.createElement("div");
+			/*var pButton = document.createElement("div");
 			pButton.innerHTML = "P";
 			pButton.classList.add("button");
 			pButton.id = "P";
-			document.body.appendChild(pButton);
+			document.body.appendChild(pButton);*/
 			
 			alert("touch is supported");
 			//take touch keys as input
@@ -122,21 +122,21 @@
 				e.preventDefault();
 			}, false);
 			document.getElementById("X").addEventListener('touchstart', function(e){
-				game.keyDown(88);
+				game.keyDown(90);	//should be 88
 				e.preventDefault();
 			}, false);
 			document.getElementById("Z").addEventListener('touchstart', function(e){
-				game.keyDown(99);
+				game.keyDown(88);	//should be 99
 				e.preventDefault();
 			}, false);
-			document.getElementById("P").addEventListener('touchstart', function(e){
+			/*document.getElementById("P").addEventListener('touchstart', function(e){
 				game.keyDown(80);
 				e.preventDefault();
-			}, false);
+			}, false);*/
 
 		}
 		else{
-			console.log("updated3");
+			console.log("updated4");
 			//Listen for keyboard things.... NOT BUTT THINGS... well... maybe sometimes butt things
 			window.addEventListener("keydown", function keydown(e){
 				var keycode = e.which || window.event.keycode;
