@@ -90,6 +90,26 @@
 			zButton.classList.add("button");
 			zButton.id = "Z";
 			document.body.appendChild(zButton);
+			
+			//take touch keys as input
+			leftButton.addEventListener('touchstart', function(e){
+				alert("LEFT");
+				alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
+			}, false);
+			rightButton.addEventListener('touchstart', function(e){
+				alert("RIGHT");
+				alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
+			}, false);
+			
+			xButton.addEventListener('touchstart', function(e){
+				alert("X");
+				alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
+			}, false);
+			zButton.addEventListener('touchstart', function(e){
+				alert("Z");
+				alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
+			}, false);
+
 		}
 		else{}
 	</script>
