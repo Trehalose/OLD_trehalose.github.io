@@ -122,11 +122,12 @@
 				e.preventDefault();
 			}, false);
 			document.getElementById("X").addEventListener('touchstart', function(e){
-				game.keyDown(90);	//should be 88
+				game.keyDown(88);
 				e.preventDefault();
 			}, false);
 			document.getElementById("Z").addEventListener('touchstart', function(e){
-				game.keyDown(88);	//should be 90
+				alert("pressed Z");
+				game.keyDown(90);
 				e.preventDefault();
 			}, false);
 			/*document.getElementById("P").addEventListener('touchstart', function(e){
@@ -136,7 +137,7 @@
 
 		}
 		else{
-			console.log("updated5");
+			console.log("updated6");
 			//Listen for keyboard things.... NOT BUTT THINGS... well... maybe sometimes butt things
 			window.addEventListener("keydown", function keydown(e){
 				var keycode = e.which || window.event.keycode;
