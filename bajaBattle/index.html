@@ -92,21 +92,21 @@
 			document.body.appendChild(zButton);
 			
 			//take touch keys as input
-			leftButton.addEventListener('touchstart', function(e){
-				alert("LEFT");
+			leftButton.addEventListener('touchenter', function(e){
+				alert("LEFT touvh start");
 				alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
 			}, false);
 			rightButton.addEventListener('touchstart', function(e){
-				alert("RIGHT");
+				alert("RIGHT touch enter");
 				alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
 			}, false);
 			
-			xButton.addEventListener('touchstart', function(e){
-				alert("X");
+			xButton.addEventListener('ontouchstart', function(e){
+				alert("X on touch start");
 				alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
 			}, false);
-			zButton.addEventListener('touchstart', function(e){
-				alert("Z");
+			zButton.addEventListener('ontouchenter', function(e){
+				alert("Z on touch enter");
 				alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
 			}, false);
 
