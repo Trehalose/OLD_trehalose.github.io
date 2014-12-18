@@ -26,10 +26,10 @@
 			text-align: center;
 			vertical-align: middle;
 			font-size: 150px;
-			/*-webkit-user-select: none;
+			-webkit-user-select: none;
 			-moz-user-select: none;
 			-khtml-user-select: none;
-			-ms-user-select: none;*/
+			-ms-user-select: none;
 		}
 		#left{
 			top: 300px;
@@ -96,20 +96,20 @@
 			
 			alert("touch is supported");
 			//take touch keys as input
-			leftButton.addEventListener('onmousedown', function(e){
+			document.getElementById("left").addEventListener('onmousedown', function(e){
 				alert("LEFT touvh start");
 				//e.preventDefault();
 			}, false);
-			rightButton.addEventListener('onclick', function(e){
+			document.getElementById("right").addEventListener('onclick', function(e){
 				alert("RIGHT touch enter");
 				//e.preventDefault();
 			}, false);
 			
-			xButton.addEventListener('ontouchstart', function(e){
+			document.getElementById("X").addEventListener('ontouchstart', function(e){
 				alert("X on touch start");
 				//e.preventDefault();
 			}, false);
-			zButton.addEventListener('ontouchenter', function(e){
+			document.getElementById("Z").addEventListener('ontouchenter', function(e){
 				alert("Z on touch enter");
 				//e.preventDefault();
 			}, false);
