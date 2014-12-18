@@ -94,29 +94,39 @@
 			zButton.id = "Z";
 			document.body.appendChild(zButton);
 			
+			var pButton = document.createElement("div");
+			pButton.innerHTML = "P";
+			pButton.classList.add("button");
+			pButton.id = "P";
+			document.body.appendChild(pButton);
+			
 			alert("touch is supported");
 			//take touch keys as input
 			document.getElementById("left").addEventListener('touchstart', function(e){
-				alert("LEFT touvh start");
-				//e.preventDefault();
+				game.keyDown(37);
+				e.preventDefault();
 			}, false);
 			document.getElementById("right").addEventListener('touchstart', function(e){
-				alert("RIGHT touch enter");
-				//e.preventDefault();
+				game.keyDown(39);
+				e.preventDefault();
 			}, false);
 			
-			document.getElementById("X").addEventListener('touchstart', function(e){
-				alert("X on touch start");
-				//e.preventDefault();
+			document.getElementById("X").addEventListener('touchstart', function(e
+				game.keyDown(88);
+				e.preventDefault();
 			}, false);
 			document.getElementById("Z").addEventListener('touchstart', function(e){
-				alert("Z on touch enter");
-				//e.preventDefault();
+				game.keyDown(99);
+				e.preventDefault();
+			}, false);
+			document.getElementById("P").addEventListener('touchstart', function(e){
+				game.keyDown(80);
+				e.preventDefault();
 			}, false);
 
 		}
 		else{
-			console.log("updated2");
+			console.log("updated3");
 		}
 	</script>
 	<script src="js/tacopayers.js"></script>

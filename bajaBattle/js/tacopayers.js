@@ -183,8 +183,8 @@ WelcomeState.prototype.draw = function(game, dt, ctx){	//TODO: CHANGE WHEN ADDIN
 };
 //for when the user presses button to start the game.
 WelcomeState.prototype.keyDown = function(game, keyCode){
-	if(keyCode == 90 /*X*/){
-		//X starts the character choice screen
+	if(keyCode == 90 /*Z*/){
+		//Z starts the character choice screen
 		game.moveToState(new CharacterChoiceState());
 	}
 };
@@ -240,7 +240,7 @@ GameOverState.prototype.draw = function(game, dt, ctx){
 };
 GameOverState.prototype.keyDown = function(game, keyCode){
 	if(keyCode == 90){
-		//X restarts for endless fun!
+		//Z restarts for endless fun!
 		//TODO: CHANGE TO MEED SCORING METHOD
 		game.forfeit = false;
 		game.moveToState(new CharacterChoiceState());
@@ -799,10 +799,10 @@ CharacterChoiceState.prototype.draw = function(game, dt, ctx){
 	
 };
 CharacterChoiceState.prototype.keyDown = function(game, keyCode){
-	if(keyCode == 37){
+	if(keyCode == 37){	//L arrow
 		this.choice = 0;
 	}
-	else if(keyCode == 39){
+	else if(keyCode == 39){	//R arrow
 		this.choice = 1;
 	}
 	else if(keyCode == 90){
