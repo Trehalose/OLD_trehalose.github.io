@@ -55,7 +55,6 @@
 	<div id="gameContainer">
 		<canvas id="datCanvass"></canvas>
 	</div>
-	<a id="muteLink" href="#" onclick="toggleMute()">mute</a>
 	<script>
 		function isTouchSupported() {
 			var msTouchEnabled = window.navigator.msMaxTouchPoints;
@@ -119,10 +118,6 @@
 			var keycode = e.which || window.event.keycode;
 			game.keyUp(keycode);
 		});
-		function toggleMute() {
-			game.mute();
-			document.getElementById("muteLink").innerText = game.sounds.mute ? "unmute" : "mute";
-		}
 	</script>
 </body>
 </html>

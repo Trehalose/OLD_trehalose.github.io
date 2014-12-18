@@ -42,7 +42,6 @@ function Game(){
 	//animation
 	this.frame = 0;
 	//The sounds n junk
-	this.sounds = null;
 }
 
 //To initialize the physical game by collecting canvas data
@@ -125,17 +124,6 @@ Game.prototype.keyUp = function(keyCode){
 Game.prototype.stop = function Stop(){
 	clearInterval(this.intervalId);
 };
-Game.prototype.mute = function(){
-	if(mute == true){
-		this.sounds.mute = true;
-	}
-	else if(mute == false){
-		this.sounds.mute = false;
-	}
-	else{
-		this.sounds.mute = this.sounds.mute ? false: true;
-	}
-};
 
 
 //OUR GAME LOOP
@@ -166,13 +154,7 @@ function GameLoop(game){
 //THE WELCOME STATE.... WEE
 function WelcomeState(){}
 //
-WelcomeState.prototype.enter = function(game){
-	game.sounds = new Sounds();
-	game.sounds.init();
-	game.sounds.loadSound('pay', 'sound/pay.mp3');
-	game.sounds.loadSound('hit', 'sound/hitenemy.mp3');
-	game.sounds.loadSound('behit', 'sound/hithero.mp3');
-};
+WelcomeState.prototype.enter = function(game){};
 WelcomeState.prototype.update = function(game, dt){};
 //welcome's draw state
 WelcomeState.prototype.draw = function(game, dt, ctx){	//TODO: CHANGE WHEN ADDING GRAPHICS
@@ -513,7 +495,7 @@ PlayState.prototype.update = function(game, dt){
 		if(chaCHING){
 			this.bbs.splice(i--, 1);
 			this.bbCurrentVelocity += this.config.bbFrustreleration;
-			game.sounds.playSound("hit");
+			//TODO SOUND
 		}
 	}
 	//find all front ranking bbs so they can use refunds
@@ -540,7 +522,7 @@ PlayState.prototype.update = function(game, dt){
 		if(((refund.x > this.hero.x+2)&&(refund.x<this.hero.x+this.hero.width-2)&&(refund.y > this.hero.y+2)&&(refund.y<this.hero.y+this.hero.height-2)) || ((refund.x+refund.width > this.hero.x+2)&&(refund.x+refund.width<this.hero.x+this.hero.width-2)&&(refund.y+refund.height > this.hero.y+2)&&(refund.y+refund.height<this.hero.y+this.hero.height-2))){
 			this.refunds.splice(i--,1);
 			game.lives--;
-			game.sounds.playSound("behit");
+			//TODO SOUNDS
 		}
 	}
 	//check collision of hero and bbs
@@ -548,7 +530,7 @@ PlayState.prototype.update = function(game, dt){
 		var bb = this.bbs[i];
 		if(((bb.x > this.hero.x+2)&&(bb.x<this.hero.x+this.hero.width-2)&&(bb.y > this.hero.y+2)&&(bb.y<this.hero.y+this.hero.height-2)) || ((bb.x+bb.width > this.hero.x+2)&&(bb.x+bb.width<this.hero.x+this.hero.width-2)&&(bb.y+bb.height > this.hero.y+2)&&(bb.y+bb.height<this.hero.y+this.hero.height-2))){
 			game.lives = 0;
-			game.sounds.playSound("behit");
+			//TODO SOUNDS
 		}
 	}
 	//check for failure or victory in a battle
@@ -585,7 +567,7 @@ PlayState.prototype.Pay = function(){
 	if(this.lastPaymentTime === null || ((new Date()).valueOf() - this.lastPaymentTime) > (1000/this.config.paymentMaxFireRate)){
 		this.payments.push(new Payment((this.hero.x)+this.hero.width/4, (this.hero.y)+this.hero.height/4, this.config.paymentVelocity));
 		this.lastPaymentTime = (new Date()).valueOf();
-		game.sounds.playSound("pay");
+		//TODO SOUNDS
 	}
 };
 //Draw the gameplay state
@@ -842,39 +824,3 @@ CharacterChoiceState.prototype.keyUp = function(game, keyCode){};
 
 
 //Sound Stuff
-function Sounds(){
-	this.audioContext = null;
-	this.sounds = {};
-}
-Sounds.prototype.init = function(){
-	context = window.AudioContext || window.webkitAudioContext;
-	this.audioContext = new context();
-	this.mute = false;
-};
-Sounds.prototype.loadSound = function(name,url){
-	var self = this;
-	this.sounds[name]=null;
-	var req = new XMLHttpRequest();req.open('GET', url, true);
-	req.responseType = 'arraybuffer';
-	req.onload = function() {
-		self.audioContext.decodeAudioData(req.response, function(buffer) {
-		self.sounds[name] = {buffer: buffer};
-	});
-	};
-	try {
-		req.send();
-	}
-	catch(e) {
-		console.log("whoops. you're on your own, kid.");
-		console.log(e);
-	}
-};
-Sounds.prototype.playSound = function(){
-	if(this.sounds[name] === undefined || this.sounds[name] === null || this.mute === true) {
-		return;
-	}
-	var source = this.audioContext.createBufferSource();
-	source.buffer = this.sounds[name].buffer;
-	source.connect(this.audioContext.destination);
-	source.start(0);
-};
