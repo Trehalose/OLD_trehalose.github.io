@@ -96,11 +96,11 @@
 			
 			alert("touch is supported");
 			//take touch keys as input
-			document.getElementById("left").addEventListener('onmousedown', function(e){
+			document.getElementById("left").addEventListener('touchstart', function(e){
 				alert("LEFT touvh start");
 				//e.preventDefault();
 			}, false);
-			document.getElementById("right").addEventListener('onclick', function(e){
+			document.getElementById("right").addEventListener('touchenter', function(e){
 				alert("RIGHT touch enter");
 				//e.preventDefault();
 			}, false);
