@@ -107,6 +107,7 @@ Game.prototype.start = function(){
 };
 //for when keys are pressed down and up
 Game.prototype.keyDown = function(keyCode){
+	alert("it was called!");
 	this.pressedKeys[keyCode] = true;
 	//delegate keypressing task to current state
 	if(this.currentState() && this.currentState().keyDown){
