@@ -526,8 +526,7 @@ PlayState.prototype.update = function(game, dt){
 			this.refunds.splice(i--,1);
 			game.lives--;
 			//TODO SOUNDS
-			//document.getElementById("hithero").play();
-			document.getElementById("hitenemy").play();
+			document.getElementById("hithero").play();
 		}
 	}
 	//check collision of hero and bbs
