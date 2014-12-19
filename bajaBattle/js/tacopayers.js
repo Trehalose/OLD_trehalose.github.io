@@ -703,7 +703,7 @@ PauseState.prototype.draw = function(game, dt, ctx){
 	ctx.fillStyle="#ffffff";
 	ctx.fillRect(0,0,game.width, game.height);
 	//draw dat shit wooo
-	ctx.font="14px Arial";
+	ctx.font="50px Arial";
 	ctx.fillStyle = "#000000";
 	ctx.textBaseline = "middle";
 	ctx.textAlign = "center";
