@@ -42,9 +42,9 @@ function Game(){
 	//animation
 	this.frame = 0;
 	//The sounds n junk
-	var paySound = document.getElementById("pav")[0];
-	var hitherSound = document.getElementById("hithero")[0];
-	var hitenSound = document.getElementById("hitenemy")[0];
+	var paySound = document.getElementById("pav");
+	var hitherSound = document.getElementById("hithero");
+	var hitenSound = document.getElementById("hitenemy");
 }
 
 //To initialize the physical game by collecting canvas data
