@@ -489,7 +489,7 @@ PlayState.prototype.update = function(game, dt){
 				if(((payment.x > this.cheatBox.x+5)&&(payment.x<this.cheatBox.x+this.cheatBox.width-5)&&(payment.y > this.cheatBox.y+5)&&(payment.y<this.cheatBox.y+this.cheatBox.height-5)) || ((payment.x+payment.width > this.cheatBox.x+5)&&(payment.x+payment.width<this.cheatBox.x+this.cheatBox.width-5)&&(payment.y+payment.height > this.cheatBox.y+5)&&(payment.y+payment.height<this.cheatBox.y+this.cheatBox.height-5))){
 					this.cheatBox.destroyed = true;
 					//console.log(game.cheatMode + " SOME HOW THIS GOOFED...");
-					document.getElementById("hitenemy").play();
+					document.getElementById("hiten").play();
 
 				}
 			}
@@ -498,7 +498,7 @@ PlayState.prototype.update = function(game, dt){
 			this.bbs.splice(i--, 1);
 			this.bbCurrentVelocity += this.config.bbFrustreleration;
 			//TODO SOUND
-			document.getElementById("hitenemy").play();
+			document.getElementById("hiten").play();
 		}
 	}
 	//find all front ranking bbs so they can use refunds
