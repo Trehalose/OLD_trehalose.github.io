@@ -498,7 +498,8 @@ PlayState.prototype.update = function(game, dt){
 			this.bbs.splice(i--, 1);
 			this.bbCurrentVelocity += this.config.bbFrustreleration;
 			//TODO SOUND
-			document.getElementById("hitenemy").play();		}
+			document.getElementById("hitenemy").play();
+		}
 	}
 	//find all front ranking bbs so they can use refunds
 	var frontRankBBs = {};
@@ -525,7 +526,8 @@ PlayState.prototype.update = function(game, dt){
 			this.refunds.splice(i--,1);
 			game.lives--;
 			//TODO SOUNDS
-			document.getElementById("hithero").play();
+			//document.getElementById("hithero").play();
+			document.getElementById("hitenemy").play();
 		}
 	}
 	//check collision of hero and bbs
