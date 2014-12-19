@@ -242,6 +242,8 @@ GameOverState.prototype.keyDown = function(game, keyCode){
 		//Z restarts for endless fun!
 		//TODO: CHANGE TO MEED SCORING METHOD
 		game.forfeit = false;
+		game.heroScore = 0;
+		game.enemyScore = 0;
 		game.moveToState(new CharacterChoiceState());
 	}
 };
