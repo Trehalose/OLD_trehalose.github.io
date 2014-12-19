@@ -42,6 +42,9 @@ function Game(){
 	//animation
 	this.frame = 0;
 	//The sounds n junk
+	var paySound = document.getElementById("pav")[0];
+	var hitherSound = document.getElementById("hithero")[0];
+	var hitenSound = document.getElementById("hitenemy")[0];
 }
 
 //To initialize the physical game by collecting canvas data
@@ -490,6 +493,8 @@ PlayState.prototype.update = function(game, dt){
 				if(((payment.x > this.cheatBox.x+5)&&(payment.x<this.cheatBox.x+this.cheatBox.width-5)&&(payment.y > this.cheatBox.y+5)&&(payment.y<this.cheatBox.y+this.cheatBox.height-5)) || ((payment.x+payment.width > this.cheatBox.x+5)&&(payment.x+payment.width<this.cheatBox.x+this.cheatBox.width-5)&&(payment.y+payment.height > this.cheatBox.y+5)&&(payment.y+payment.height<this.cheatBox.y+this.cheatBox.height-5))){
 					this.cheatBox.destroyed = true;
 					//console.log(game.cheatMode + " SOME HOW THIS GOOFED...");
+					game.hitenSound.play();
+
 				}
 			}
 		}
@@ -497,6 +502,7 @@ PlayState.prototype.update = function(game, dt){
 			this.bbs.splice(i--, 1);
 			this.bbCurrentVelocity += this.config.bbFrustreleration;
 			//TODO SOUND
+			game.hitenSound.play();
 		}
 	}
 	//find all front ranking bbs so they can use refunds
@@ -524,6 +530,7 @@ PlayState.prototype.update = function(game, dt){
 			this.refunds.splice(i--,1);
 			game.lives--;
 			//TODO SOUNDS
+			game.hitherSound.play();
 		}
 	}
 	//check collision of hero and bbs
@@ -532,6 +539,7 @@ PlayState.prototype.update = function(game, dt){
 		if(((bb.x > this.hero.x+2)&&(bb.x<this.hero.x+this.hero.width-2)&&(bb.y > this.hero.y+2)&&(bb.y<this.hero.y+this.hero.height-2)) || ((bb.x+bb.width > this.hero.x+2)&&(bb.x+bb.width<this.hero.x+this.hero.width-2)&&(bb.y+bb.height > this.hero.y+2)&&(bb.y+bb.height<this.hero.y+this.hero.height-2))){
 			game.lives = 0;
 			//TODO SOUNDS
+			game.hitherSound.play();
 		}
 	}
 	//check for failure or victory in a battle
@@ -569,6 +577,7 @@ PlayState.prototype.Pay = function(){
 		this.payments.push(new Payment((this.hero.x)+this.hero.width/4, (this.hero.y)+this.hero.height/4, this.config.paymentVelocity));
 		this.lastPaymentTime = (new Date()).valueOf();
 		//TODO SOUNDS
+		game.paySound.play();
 	}
 };
 //Draw the gameplay state
@@ -829,6 +838,3 @@ CharacterChoiceState.prototype.keyDown = function(game, keyCode){
 	}
 };
 CharacterChoiceState.prototype.keyUp = function(game, keyCode){};
-
-
-//Sound Stuff
