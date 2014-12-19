@@ -374,7 +374,7 @@ PlayState.prototype.enter = function(game){
 };
 PlayState.prototype.update = function(game, dt){
 	//MOVE/UPDATE hero
-	if(game.pressedKeys[37]){
+	/*if(game.pressedKeys[37]){
 		this.hero.x -= this.heroSpeed * dt;
 	}
 	if(game.pressedKeys[39]){
@@ -382,7 +382,7 @@ PlayState.prototype.update = function(game, dt){
 	}
 	if(game.pressedKeys[90]){
 		this.Pay();
-	}
+	}*/
 	if(this.hero.x < game.gameBounds.left){	//keep hero in boundaries of game
 		this.hero.x = game.gameBounds.left;
 	}
@@ -680,6 +680,13 @@ PlayState.prototype.keyDown = function(game, keyCode){
 	}
 	if(keyCode == 88){	//X for forfeit
 		game.forfeit = true;
+	}
+	//MOVE/UPDATE hero
+	if(keyCode == 37){
+		this.hero.x -= this.heroSpeed * dt;
+	}
+	if(keyCode == 39){
+		this.hero.x += this.heroSpeed * dt;
 	}
 };
 PlayState.prototype.keyUp = function(game, keyCode){};
