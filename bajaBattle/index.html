@@ -20,37 +20,40 @@
 			margin-right: auto;*/
 		}
 		.button{
-			width: 200px; /*150*/
+			width: 260px; /*150*/
 			height: 290px;
 			background-color: #ffffff;
 			border: 5px solid #000000;
 			text-align: center;
 			vertical-align: middle;
 			font-size: 150px;
+			border-radius: 25px;
 			-webkit-user-select: none;
 			-moz-user-select: none;
 			-khtml-user-select: none;
 			-ms-user-select: none;
 		}
 		#left{
+			width: 390px; /*150*/
 			top: 900px; /*300px*/
 			left: 0px; /*0px*/
-			border-radius: 25px 0px 0px 25px;
 		}
 		#right{
+			width: 390px; /*150*/
 			top: 900px; /*300px*/
-			left: 225px; /*960px*/
-			border-radius: 0px 25px 25px 0px;
+			left: 400px; /*960px*/
 		}
 		#Z{
 			top: 600px; /*0px*/
-			left: 0px; /*0px*/
-			border-radius: 25px 0px 0px 25px;
+			left: 532px; /*0px*/
 		}
 		#X{
 			top: 600px; /*0px*/
-			left: 225px; /*960px*/
-			border-radius: 0px 25px 25px 0px;
+			left: 0px; /*960px*/
+		}
+		#P{
+			top: 600px; /*0px*/
+			left: 266px; /*960px*/
 		}
 		div{
 			position: fixed;
@@ -110,11 +113,11 @@
 			zButton.id = "Z";
 			document.body.appendChild(zButton);
 			
-			/*var pButton = document.createElement("div");
+			var pButton = document.createElement("div");
 			pButton.innerHTML = "P";
 			pButton.classList.add("button");
 			pButton.id = "P";
-			document.body.appendChild(pButton);*/
+			document.body.appendChild(pButton);
 			
 			//take touch keys as input
 			document.getElementById("left").addEventListener('touchstart', function(e){
@@ -133,14 +136,14 @@
 				game.keyDown(90);
 				e.preventDefault();
 			}, false);
-			/*document.getElementById("P").addEventListener('touchstart', function(e){
+			document.getElementById("P").addEventListener('touchstart', function(e){
 				game.keyDown(80);
 				e.preventDefault();
-			}, false);*/
+			}, false);
 
 		}
 		else{
-			console.log("updated12");
+			console.log("updated15");
 			//Listen for keyboard things.... NOT BUTT THINGS... well... maybe sometimes butt things
 			window.addEventListener("keydown", function keydown(e){
 				var keycode = e.which || window.event.keycode;
