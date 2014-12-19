@@ -41,10 +41,6 @@ function Game(){
 	this.datCanvass = null;
 	//animation
 	this.frame = 0;
-	//The sounds n junk
-	var paySound = document.getElementById("pav");
-	var hitherSound = document.getElementById("hithero");
-	var hitenSound = document.getElementById("hitenemy");
 }
 
 //To initialize the physical game by collecting canvas data
@@ -493,7 +489,7 @@ PlayState.prototype.update = function(game, dt){
 				if(((payment.x > this.cheatBox.x+5)&&(payment.x<this.cheatBox.x+this.cheatBox.width-5)&&(payment.y > this.cheatBox.y+5)&&(payment.y<this.cheatBox.y+this.cheatBox.height-5)) || ((payment.x+payment.width > this.cheatBox.x+5)&&(payment.x+payment.width<this.cheatBox.x+this.cheatBox.width-5)&&(payment.y+payment.height > this.cheatBox.y+5)&&(payment.y+payment.height<this.cheatBox.y+this.cheatBox.height-5))){
 					this.cheatBox.destroyed = true;
 					//console.log(game.cheatMode + " SOME HOW THIS GOOFED...");
-					game.hitenSound.play();
+					document.getElementById("hitenemy").play();
 
 				}
 			}
@@ -502,8 +498,7 @@ PlayState.prototype.update = function(game, dt){
 			this.bbs.splice(i--, 1);
 			this.bbCurrentVelocity += this.config.bbFrustreleration;
 			//TODO SOUND
-			game.hitenSound.play();
-		}
+			document.getElementById("hitenemy").play();		}
 	}
 	//find all front ranking bbs so they can use refunds
 	var frontRankBBs = {};
@@ -530,7 +525,7 @@ PlayState.prototype.update = function(game, dt){
 			this.refunds.splice(i--,1);
 			game.lives--;
 			//TODO SOUNDS
-			game.hitherSound.play();
+			document.getElementById("hithero").play();
 		}
 	}
 	//check collision of hero and bbs
@@ -539,7 +534,7 @@ PlayState.prototype.update = function(game, dt){
 		if(((bb.x > this.hero.x+2)&&(bb.x<this.hero.x+this.hero.width-2)&&(bb.y > this.hero.y+2)&&(bb.y<this.hero.y+this.hero.height-2)) || ((bb.x+bb.width > this.hero.x+2)&&(bb.x+bb.width<this.hero.x+this.hero.width-2)&&(bb.y+bb.height > this.hero.y+2)&&(bb.y+bb.height<this.hero.y+this.hero.height-2))){
 			game.lives = 0;
 			//TODO SOUNDS
-			game.hitherSound.play();
+			document.getElementById("hithero").play();
 		}
 	}
 	//check for failure or victory in a battle
@@ -577,7 +572,7 @@ PlayState.prototype.Pay = function(){
 		this.payments.push(new Payment((this.hero.x)+this.hero.width/4, (this.hero.y)+this.hero.height/4, this.config.paymentVelocity));
 		this.lastPaymentTime = (new Date()).valueOf();
 		//TODO SOUNDS
-		game.paySound.play();
+		document.getElementById("pay").play();
 	}
 };
 //Draw the gameplay state
