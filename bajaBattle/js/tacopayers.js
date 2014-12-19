@@ -112,6 +112,7 @@ Game.prototype.keyDown = function(keyCode){
 	if(this.currentState() && this.currentState().keyDown){
 		this.currentState().keyDown(this,keyCode);
 	}
+	this.pressedKeys[keyCode] = false;
 };
 Game.prototype.keyUp = function(keyCode){
 	delete this.pressedKeys[keyCode];
