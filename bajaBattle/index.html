@@ -140,10 +140,30 @@
 				game.keyDown(80);
 				e.preventDefault();
 			}, false);
-
+			
+			document.getElementById("left").addEventListener('touchend', function(e){
+				game.keyUp(37);
+				e.preventDefault();
+			}, false);
+			document.getElementById("right").addEventListener('touchend', function(e){
+				game.keyUp(39);
+				e.preventDefault();
+			}, false);
+			document.getElementById("X").addEventListener('touchend', function(e){
+				game.keyUp(88);
+				e.preventDefault();
+			}, false);
+			document.getElementById("Z").addEventListener('touchend', function(e){
+				game.keyUp(90);
+				e.preventDefault();
+			}, false);
+			document.getElementById("P").addEventListener('touchsend', function(e){
+				game.keyUp(80);
+				e.preventDefault();
+			}, false);
 		}
 		else{
-			console.log("updated17");
+			console.log("updated20");
 			//Listen for keyboard things.... NOT BUTT THINGS... well... maybe sometimes butt things
 			window.addEventListener("keydown", function keydown(e){
 				var keycode = e.which || window.event.keycode;

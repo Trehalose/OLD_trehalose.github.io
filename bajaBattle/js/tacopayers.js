@@ -112,7 +112,6 @@ Game.prototype.keyDown = function(keyCode){
 	if(this.currentState() && this.currentState().keyDown){
 		this.currentState().keyDown(this,keyCode);
 	}
-	this.pressedKeys[keyCode] = false;
 };
 Game.prototype.keyUp = function(keyCode){
 	delete this.pressedKeys[keyCode];
@@ -374,7 +373,7 @@ PlayState.prototype.enter = function(game){
 };
 PlayState.prototype.update = function(game, dt){
 	//MOVE/UPDATE hero
-	/*if(game.pressedKeys[37]){
+	if(game.pressedKeys[37]){
 		this.hero.x -= this.heroSpeed * dt;
 	}
 	if(game.pressedKeys[39]){
@@ -382,7 +381,7 @@ PlayState.prototype.update = function(game, dt){
 	}
 	if(game.pressedKeys[90]){
 		this.Pay();
-	}*/
+	}
 	if(this.hero.x < game.gameBounds.left){	//keep hero in boundaries of game
 		this.hero.x = game.gameBounds.left;
 	}
@@ -671,7 +670,7 @@ PlayState.prototype.draw = function(game, dt, ctx){	//TODO: ADD IMAGES
 		ctx.strokeRect(game.gameBounds.left, game.gameBounds.top, game.gameBounds.right - game.gameBounds.left, game.gameBounds.bottom - game.gameBounds.top);	
 	}
 };
-PlayState.prototype.keyDown = function(game, keyCode){
+PlayState.prototype.keyDown = function(game, keyCode, dt){
 	if(keyCode == 90){	//Z fires payment
 		this.Pay();
 	}
@@ -681,13 +680,13 @@ PlayState.prototype.keyDown = function(game, keyCode){
 	if(keyCode == 88){	//X for forfeit
 		game.forfeit = true;
 	}
-	//MOVE/UPDATE hero
+	/*//MOVE/UPDATE hero
 	if(keyCode == 37){
 		this.hero.x -= this.heroSpeed * dt;
 	}
 	if(keyCode == 39){
 		this.hero.x += this.heroSpeed * dt;
-	}
+	}*/
 };
 PlayState.prototype.keyUp = function(game, keyCode){};
 
