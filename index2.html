@@ -1,0 +1,603 @@
+﻿<!DOCTYPE html>
+	<head>
+		<title>Rina the Bane's coding PROJECT-HUB</title>
+		<link href='http://fonts.googleapis.com/css?family=Patrick+Hand|Boogaloo' rel='stylesheet' type='text/css'>
+		<style>
+			/*NORMAL PAGE-START STUFF*/
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html, body{
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+				font-size: 12px;
+				background: #ecffeb;
+				color: #472e14;
+				font-family: 'Patrick Hand', sans-serif;
+				background-image: url('/img/banboobg3a.png');
+				background-repeat: no-repeat;
+				background-position: right 0px;
+				background-size: auto 100vh;
+			}
+			ul{
+				list-style-type: none;
+			}
+			/*HEADER*/
+			#header{
+				position: absolute;
+				top: 0;
+				width: 100%;
+				display: block;
+				z-index: 100;
+				font-family: 'Boogaloo', serif;
+				margin-bottom: 1%;
+			}
+			h1{
+				z-index: 100;
+				background: #cfac87;
+				padding: 1% 0 1% 3.5%;
+				color: #a2f276;
+				text-shadow: -4px -2px #472e14;
+				/*box-shadow: 0 10px 100px rgba(71, 46, 20, 0.75);
+				-moz-box-shadow: 0 10px 100px rgba(71, 46, 20, 0.75);
+				-webkit-box-shadow: 0 10px 100px rgba(71, 46, 20, 0.75);*/
+				
+			}
+			#nav{
+				z-index: 100;
+				margin-left: 3.25%;
+				display: block;
+			}
+			#nav li{
+				text-align: center;
+				display: inline-block;
+				list-style-type: none;
+				background: #a2f276;
+				border: 15px solid #a2f276;
+				border-left: 0.5em solid #cfac87;
+				border-bottom: 0;
+				border-top: 0;
+				border-radius: 0 25px 0 50%;
+				padding: 1%;
+			}
+			#nav li:hover{
+				padding: 1% 0 2% 0.5%;
+				margin-right: 1.5%;
+				margin-bottom: -2%;
+				color: #ecffeb;
+			}
+			#nav li:active{
+				color: #cfac87;
+			}
+			.clicked{
+				padding: 1% 0 2% 0.5%;
+				color: #cfac87;
+				background: #ff0000;
+			}
+			
+			/*FOOTER*/
+			#footer{
+				position: relative;
+				margin-top: 100%;
+				display: block;
+				width: 100%;
+				background: #cfac87;
+			}
+			
+			
+			
+			
+			
+			
+			
+			/*FOLIO STUFF*/
+			#mainDesc{
+				display: inline-block;
+				background: #cfac87;
+				width: 53%;
+				margin-top: 15%;
+				margin-left: 3%;
+				padding: 25px 10% 35px 6%;
+				border-radius: 4em 5em 5em 5em;
+				vertical-align: bottom;
+				border-bottom: 1em solid #a2f276;
+			}
+			#mainDescImg{
+				display: inline-block;
+				width: 20%;
+				height: 0;
+				margin-left: -9%;
+				padding-bottom: 20%;
+				border: 20px solid #a2f276;
+				border-radius: 100% 0px 100% 75%;
+				background: #a2f276;
+			}
+			.folioObj, .descObj, .contactObj{
+				width: 100%;
+			}
+			.contactObj{
+				display: none;
+			}
+			.folioDesc{
+				display: inline-block;
+				float: left;
+				width: 50%;
+				height: auto;
+				margin-top: 10%;
+				margin-left: 3%;
+				background: #cfac87;
+				border-radius: 5em 0 75px 9em;
+				border-right: 1.5em solid #a2f276;
+				padding: 25px 9% 35px 5%;
+			}
+			h2{
+				margin: 0 0 3% 3%;
+				font-family: 'Boogaloo', serif;
+				display: inline-block;
+				color: #a2f276;
+				text-shadow: -3px 2px #472e14;
+			}
+			p{
+				margin: 0 0 1.5% 3%;
+				padding-left: 5%;
+			}
+			.lookHere{
+				font-size: 80%;
+				padding: 0;
+				margin: 0;
+				float: right;
+				color: #8b6f59;
+			}
+			.linkTo{
+				text-align: right;
+			}
+			.linkTo a, #mainDesc a{
+				color: #a2f276;	
+			}
+			.linkTo a:hover, #mainDesc a:hover{
+				color: #ecffeb;
+			}
+			.linkTo a:active, #mainDesc a:active{
+				color: #472e14;
+			}
+			.screenshot{
+				display: inline-block;
+				width: 24%;
+				height: 0;
+				padding-bottom: 24%;
+				margin-left: -12%;
+				border: 20px solid #a2f276;
+				border-radius: 50% 0px 50% 100%;
+				background: #a2f276;
+			}
+			.contactImg{
+				display: inline-block;
+				width: 24%;
+				height: 0;
+				padding-bottom: 24%;
+				margin-left: -5%;
+				margin-top: 4.5%;
+			}
+			.contactImg1{
+				display: block;
+				width: 25%;
+				height: 0;
+				padding-bottom: 25%;
+				background: #a2f276;
+				border: 20px solid #a2f276;
+				border-radius: 75% 0px 75% 100%;
+			}
+			.contactImg2{
+				display: block;
+				width: 7%;
+				height: 0;
+				padding-bottom: 7%;
+				margin-left: 12%;
+				background: #a2f276;
+				border: 20px solid #a2f276;
+				border-radius: 100% 100% 0px 100%;
+				/*TODO: vertically center this bitch in the containing div element*/
+			}
+			
+			
+			
+			/*PARALLAX STUFF*/
+			.lax{
+				height: 600px; /*It is time to update your browser*/
+				height: 100vh;
+				overflow-x: hidden;
+				overflow-y: auto;
+				-webkit-perspective: 300px;
+				-moz-perspective: 300px;
+				perspective: 300px;
+			}
+			.laxGroup{
+				position: relative;
+				height: 600px; /*It is time to update your browser*/
+				height: 100vh;
+				-webkit-transform-style: preserve-3d;
+				-moz-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			.laxItem{
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				padding: 100vh 0;
+			}
+			.laxFace1{
+				transform: translateZ(0);
+				-webkit-transform: translateZ(0);
+				-moz-transform: translateZ(0);
+			}
+			.laxFace2{
+				transform: translateZ(100px) scale(0.67);
+				-webkit-transform: translateZ(100px) scale(0.67);
+				-moz-transform: translateZ(100px) scale(0.67);
+			}
+			.laxFace3{
+				transform: translateZ(-100px) scale(1.33);
+				-webkit-transform: translateZ(-100px) scale(1.33);
+				-moz-transform: translateZ(-100px) scale(1.33);
+			}
+			.laxBG1{
+				transform: translateZ(-300px) scale(2);
+				-webkit-transform: translateZ(-300px) scale(2);
+				-moz-transform: translateZ(-300px) scale(2);
+				background: linear-gradient(rgba(162,242,118,0), rgba(162,242,118,0.35), rgba(162,242,118,0));				
+			}
+			.laxBG2{
+				transform: translateZ(-600px) scale(3);
+				-webkit-transform: translateZ(-600px) scale(3);
+				-moz-transform: translateZ(-600px) scale(3);
+				background: linear-gradient(rgba(207,172,135,0), rgba(207,172,135,0.35), rgba(207,172,135,0));
+			}
+			
+			/*PARALLAX GROUP STUFF*/
+			.laxGrp1{
+				z-index: 6;
+				height: auto;
+			}
+			.laxGrp11{
+				z-index: 10;
+			}
+			.laxGrp10{
+				z-index: 9;
+			}
+			.laxGrp9{
+				z-index: 8;
+			}
+			.laxGrp8{
+				z-index: 7;
+			}
+			.laxGrp7{
+				z-index: 6;
+			}
+			.laxGrp6{
+				z-index: 5;
+			}
+			.laxGrp5{
+				z-index: 4;
+			}
+			.laxGrp4{
+				z-index: 3;
+			}
+			.laxGrp3{
+				z-index: 2;
+			}
+			.laxGrp2{
+				z-index: -4;
+				position: absolute;
+			}
+			.laxBGroup1{
+				z-index: -3;
+				position: absolute;
+			}
+			. socGrp4{
+				z-index: 1;
+			}
+			.socGrp3{
+				z-index: 2;
+			}
+			.socGrp2{
+				z-index: 3;
+			}
+			.socGrp1{
+				z-index: 4;
+			}
+			
+			
+			/*ANIMATED SCREENSHOT STUFF*/
+			@keyframes moveBG{
+				from { background-position: 0 0; }
+				to { background-position: 100% 0; }
+			}
+			@-webkit-keyframes moveBG{
+				from { background-position: 0 0; }
+				to { background-position: 100% 0; }
+			}
+			.screenshot{
+				background-size: auto 40%;
+				background-position: 75% 35%;
+				background-repeat: no-repeat;
+			}
+			.screenshot:hover{			 
+				background-size: auto 100%;
+				background-position: 0px 0px;
+				background-repeat: repeat-x;
+				-webkit-animation: moveBG 10s linear infinite;
+				animation: moveBG 10s linear infinite;
+			}
+			
+			#kanacontrapp .screenshot{
+				background-image: url('https://38.media.tumblr.com/9d2c1bebfeaad10fcddc3bd2d19661c0/tumblr_n8n89ftS961tb9zwto6_250.png');
+			}
+			#kanacontrapp .screenshot:hover{
+				background-image: url('https://38.media.tumblr.com/5b87263e6941780a0ac769ef47986815/tumblr_n8n89ftS961tb9zwto1_1280.jpg');
+			}
+			#shokurain .screenshot{
+				background-image: url('https://31.media.tumblr.com/02cf05dd56b3fc7de58c3a40dba77fcf/tumblr_n8n89ftS961tb9zwto4_400.png');
+			}
+			#shokurain .screenshot:hover{
+				background-image: url('https://31.media.tumblr.com/e8f3aebb6e46193e6719a555bfddec0f/tumblr_n8n89ftS961tb9zwto5_1280.jpg');
+			}
+			#wanicomets .screenshot{
+				background-image: url('https://31.media.tumblr.com/20fb1cf11691a88d2b201dc704a30b07/tumblr_n8n89ftS961tb9zwto3_500.gif');
+			}
+			#wanicomets .screenshot:hover{
+				background-image: url('https://31.media.tumblr.com/09689bf285bdb6ad2affcaf6a5460dd8/tumblr_n8n89ftS961tb9zwto2_1280.jpg');
+			}	
+			#kakuwaku .screenshot{
+				background-image: url('https://38.media.tumblr.com/59842dcb499f7e159688675699667aa4/tumblr_n8n89ftS961tb9zwto9_r1_400.jpg');
+			}
+			#kakuwaku .screenshot:hover{
+				background-image: url('https://31.media.tumblr.com/1b68688caa603b26af0d23e78d7d0da9/tumblr_n8n89ftS961tb9zwto10_r1_1280.jpg');
+			}
+			#bajabattle .screenshot{
+				background-image: url('');
+			}
+			#bajabattle .screenshot:hover{
+				background-image: url('');
+			}
+			#git1 .screenshot{
+				background-image: url('');
+			}
+			#git1 .screenshot:hover{
+				background-image: url('');
+			}
+			#git2 .screenshot{
+				background-image: url('');
+			}
+			#git2 .screenshot:hover{
+				background-image: url('');
+			}
+			#rinsume1 .screenshot{
+				background-image: url('');
+			}
+			#rinsume1 .screenshot:hover{
+				background-image: url('');
+			}
+			#artwis .screenshot{
+				background-image: url('');
+			}
+			#artwis .screenshot:hover{
+				background-image: url('');
+			}
+		</style>
+	</head>
+	<body>
+		<div id="page" class="lax">
+				<div id="header">
+					<h1>Rina the Bane's code HUB</h1>
+					<ul id="nav">
+						<li id="homeButton"><a>Home: All</a></li>
+						<li id="webdesButton"><a>Web Design</a></li>
+						<li id="wkapiButton"><a>Wanikani APIs</a></li>
+						<li id="otherButton"><a>Other</a></li>
+						<li id="contactButton"><a>Contact</a></li>
+					</ul>
+				</div>
+			<!--Background div flows below page content div. Its a TRICK! ughughughugu <3-->
+			<div style="z-index: -1;">
+				<div class="folioObj laxGroup BGrp2">
+					<div class="folioContents">
+						<div class="laxItem laxBG2">BG2</div>
+					</div>
+				</div>
+				<div class="folioObj laxGroup BGrp1">
+					<div class="folioContents">
+						<div class="laxItem laxBG1">BG1</div>
+					</div>
+				</div>
+				<!--Contact Area BGs-->
+				<div class="contactObj laxGroup BGrp1">
+					<div class="folioContents">
+						<div class="laxItem laxBG1">BG1</div>
+					</div>
+				</div>
+				<div class="contactObj laxGroup BGrp2">
+					<div class="folioContents">
+						<div class="laxItem laxBG2">BG2</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!--Page content div flows over background div. Its a TRICK! <3-->
+			<div style="position:absolute; top: 0; margin-top:2.5%;">
+				<ul id="folio">
+					<li class="descObj laxGroup laxGrp1">
+						<p id="mainDesc">Greetings! Rina the Bane here!~ </br> This is a project-hub where I show-off all sorts of the programming projects I've done. The projects have developed for the sake of learning, experiments, or just to prove I could do 'the thing' at all. Go ahead and scroll down to take a look through all my stuff-n'-junk. </br> Happy perusing!~</p>
+						<div id="mainDescImg"></div>
+					</li>
+					
+					
+					<li class="web folioObj laxGroup laxGrp10">
+						<div class="folioContents">
+							<div id="git2" class="laxItem laxFace1">
+								<div class="folioDesc">
+									<span class="lookHere">Mouse Here-></span>
+									<h2>The current site!</h2>
+									<p>
+										You're looking at it, B~ I feel that it is important to switch things up every now and then. I think a year is a pretty good amount of time to do that.
+									</p>
+									<p class="linkTo"><a href="http://trehalose.github.io"><strong>Check this out!~</strong></a></p>
+								</div>
+								<div class="screenshot"></div>
+							</div>
+						</div>
+					</li>
+					
+					
+					<!--CONTACTS ITEMS-->
+					<li class="contactObj laxGroup socGrp1">
+						<div class="folioContents">
+							<div class="laxItem laxFace1">
+								<div class="folioDesc">
+									<h2 class="linkTo"><a href="http://twitter.com/TheGreatYonR">@TheGreatYonR</a></h2>
+									<p>Follow this bitch on Twitter~</p>
+								</div>
+								<div class="contactImg">
+									<div class="contactImg1"></div>
+									<div class="contactImg2"></div>
+								</div>
+							</div>
+						</div>
+					</li>
+				<!--<div id="footer">...</div>-->
+			</div>
+		</div>
+		
+		
+		<script>
+			//ON X SCREENSIZE, RESIZE ELEMENTS TO __
+			var leFontSize = 12;
+			var prevWindowSize = window.innerWidth;
+			document.onload = initialWindow();
+			function initialWindow(){
+				if(window.innerWidth <= 400){//phone size
+					leFontSize = 12;
+					document.getElementsByTagName("BODY")[0].style.fontSize = leFontSize+"px";
+				}
+				if(window.innerWidth <= 800 && window.innerWidth > 400){//800*600					
+					leFontSize = 18;
+					document.getElementsByTagName("BODY")[0].style.fontSize = leFontSize+"px";
+				}
+				if(window.innerWidth <=1024 && window.innerWidth > 800){//1024*720
+					leFontSize = 24;
+					document.getElementsByTagName("BODY")[0].style.fontSize = leFontSize+"px";
+				}
+				if(window.innerWidth > 1024){//laptop
+					leFontSize = 32;
+					document.getElementsByTagName("BODY")[0].style.fontSize = leFontSize+"px";
+				}
+			}
+			window.addEventListener('resize', windowSize);
+			function windowSize(){
+				if(window.innerWidth >= (prevWindowSize+50) || window.innerWidth <= (prevWindowSize-50)){
+					if(window.innerWidth >= (prevWindowSize+50)){
+						leFontSize += Math.floor((window.innerWidth-prevWindowSize)/50);
+						document.getElementsByTagName("BODY")[0].style.fontSize = leFontSize+"px";
+					}
+					else if(window.innerWidth <= (prevWindowSize-50)){
+						if(window.innerWidth <= 400){//phone size
+							leFontSize = 12;
+							document.getElementsByTagName("BODY")[0].style.fontSize = leFontSize+"px";
+						}
+						else{
+							leFontSize -= Math.floor((prevWindowSize-window.innerWidth)/50);
+							document.getElementsByTagName("BODY")[0].style.fontSize = leFontSize+"px";
+						}
+					}
+					prevWindowSize = window.innerWidth;
+				}
+			}
+			var prevWindowSize = window.innerWidth;
+			//ON CLICK NAV BUTTON, GIVE .CLICKED, UN .CLICKED OTHER BUTTONS,
+			document.getElementById("nav").addEventListener('click', function(e){
+				if(e.target.tagName != "UL"){
+					var button = null;
+					if(e.target.id){
+						button = e.target.id;
+					}					
+					else{
+						button = e.target.parentNode.id;
+					}
+					//Remove .clicked class from all children of #nav
+					for(var i = 0; i < document.getElementById("nav").getElementsByTagName("LI").length; i++){
+						if(document.getElementById("nav").getElementsByTagName("LI")[i].classList.contains("clicked")){
+							document.getElementById("nav").getElementsByTagName("LI")[i].classList.remove("clicked");
+						}
+					}
+					document.getElementById(button).classList.add("clicked");	//Adds .clicked class to THIS child of #nav
+					document.getElementById("page").scrollTop = 0;
+					if(button === "contactButton"){}
+					else{
+						for(var k = 0; k < document.getElementsByClassName("contactObj").length; k++){
+							document.getElementsByClassName("contactObj")[k].style.display="none";
+						}
+					}
+					for(var l = 0; l < document.getElementsByClassName("folioObj").length; l++){
+						document.getElementsByClassName("folioObj")[l].style.display="none";
+					}
+					switch(button){	//Changes #mainDesc to fit section of site chosen via #nav button
+						//Choices of: homeButton, webdesButton, wkapiButton, otherButton, contactButton
+						case("webdesButton"):
+							document.getElementById("mainDesc").innerHTML = "These are all projects that I have done while learning and experimenting with web-design. I've tried to experiment with a lot of the modern features of HTML5, CSS3 and Javascript. I've found that really like Javascript!";
+							for(var l = 0; l < document.getElementsByClassName("web").length; l++){
+								document.getElementsByClassName("web")[l].style.display="inline-block";
+							}
+							break;
+						case("wkapiButton"):
+							document.getElementById("mainDesc").innerHTML = "All of these projects are projects that I've made with the Wanikani API in mind. <a href='http://wanikani.com'>Wanikani</a> is a Kanji learning-and-practising website; and it holds a special place in my heart, which has made this API a re-occurring theme in many of the project's I've worked on.";
+							for(var l = 0; l < document.getElementsByClassName("wkapi").length; l++){
+								document.getElementsByClassName("wkapi")[l].style.display="inline-block";
+							}
+							break;
+						case("otherButton"):
+							document.getElementById("mainDesc").innerHTML = "All of these projects are ones that I have not categorized with a common theme other than the fact that they don't fit the other categories. These mostly include games, but can contain other things.";
+							for(var l = 0; l < document.getElementsByClassName("other").length; l++){
+								document.getElementsByClassName("other")[l].style.display="inline-block";
+							}
+							break;
+						case("contactButton"):
+							document.getElementById("mainDesc").innerHTML = "Greetings~ Rina the Bane here! </br> <strong>Here is some trivia: </strong> Programming isn't the <em>only</em> thing I can do; I have several other skill-sets and entertaining hobbies to show off like a super-boss! If you feel like getting lost on the web for a while, go ahead and check out some of the other things I do!";
+							for(var k = 0; k < document.getElementsByClassName("contactObj").length; k++){
+							document.getElementsByClassName("contactObj")[k].style.display="inline-block";
+							}
+							break;
+						default:
+							document.getElementById("mainDesc").innerHTML = "Greetings! Rina the Bane here!~ </br> This is a project-hub where I show-off all sorts of the programming projects I've done. The projects have developed for the sake of learning, experiments, or just to prove I could do 'the thing' at all. Go ahead and scroll down to take a look through all my stuff-n'-junk. </br> Happy perusing!~";
+							for(var l = 0; l < document.getElementsByClassName("folioObj").length; l++){
+								document.getElementsByClassName("folioObj")[l].style.display="inline-block";
+							}
+							break;
+					}
+				}
+			});
+			
+			//NAV MENU COLLAPSE TO TOP AND UNCOLLAPSE FROM TOP
+			//TODO: FOOTER AT BOTTOM OF PAGE
+			document.getElementById("page").onscroll = function(event){
+				var pageTop = document.getElementById("page").scrollTop;
+				var header = document.getElementById("header");
+				var title = document.getElementById("header").firstElementChild;
+				var navBar = document.getElementById("header").firstElementChild.nextElementSibling;
+				if(pageTop > (title.offsetHeight - (title.offsetHeight*0.5))){
+					header.style.position = "fixed";
+					header.style.marginTop = pageTop+"px";
+					title.innerHTML="";
+				}
+				else{
+					header.style.position = "absolute";
+					header.style.marginTop = null;
+					title.innerHTML="Rina the Bane's code HUB";
+				}
+			};
+		</script>
+	</body>
+</html>

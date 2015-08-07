@@ -1,390 +1,673 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<title>Rina the Bane's List of Projects and Hubs</title>
-		<style>
-			body{
-				background-image: url('https://31.media.tumblr.com/d9a8c269e08a74d3ea4f5256d88e9cf8/tumblr_n5ag7f7Hzk1tb9zwto3_r1_1280.jpg');
-				background-attachment: fixed;
-				height: 100%;
-				font-family: arial, sans-serif;
-				font-size: 18px;
+<head>
+	<title>Rina the Bane's IT Webfolio</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<meta name="language" content="english" />
+	<meta name="author" content="Rina the Bane" />
+	<link href='http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Puritan:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<style>
+	/*UTILITIES*/
+		*{
+			margin: 0;
+			padding: 0;
+			-moz-box-sizing: border-box; 
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			font-family: 'Puritan', sans-serif;
+			color: #6a4d2f; /*#472e14;*/
+		}
+		body{
+			background-color: #ecffeb;
+			background-image:
+								-o-linear-gradient(right, rgba(106, 77, 47, 0) 85%, rgba(106, 77, 47, 1) 85%, rgba(106, 77, 47, 1) 90%, #d2985d 90%, #d2985d),
+								url('https://www.dropbox.com/s/n7bilbk35o1yuhq/banbooBG2.svg?raw=1');
+			background-image: 
+								-moz-linear-gradient(right, rgba(106, 77, 47, 0) 85%, rgba(106, 77, 47, 1) 85%, rgba(106, 77, 47, 1) 90%, #d2985d 90%, #d2985d),
+								url('https://www.dropbox.com/s/n7bilbk35o1yuhq/banbooBG2.svg?raw=1');
+			background-image: 
+								-webkit-linear-gradient(left, rgba(106, 77, 47, 0) 85%, rgba(106, 77, 47, 1) 85%, rgba(106, 77, 47, 1) 90%, #d2985d 90%, #d2985d),
+								url('https://www.dropbox.com/s/n7bilbk35o1yuhq/banbooBG2.svg?raw=1');
+			background-image: 
+								linear-gradient(to right, rgba(106, 77, 47, 0) 85%, rgba(106, 77, 47, 1) 85%, rgba(106, 77, 47, 1) 90%, #d2985d 90%, #d2985d),
+								url('https://www.dropbox.com/s/n7bilbk35o1yuhq/banbooBG2.svg?raw=1');
+			background-repeat: no-repeat, no-repeat;
+			background-attachment:fixed, fixed;
+			background-size: auto auto, 85vw auto;
+		}
+		a{
+			font-weight: bold;
+			color: #a2f276;
+		}
+		a:hover{
+			color: #d2985d;
+		}
+		a:active{
+			color: #ecffeb;
+		}
+	/*CONTENT SECTIONS*/
+		#title-sect{
+			display: block;
+			position: relative;
+			margin-top: 25px;
+			padding: 0.5em 0 1em 0;
+			width: 100%;
+			background-color: #cfac87;
+			-ms-transform: skewY(3deg);
+			-o-transform: skewY(3deg);
+			-moz-transform: skewY(3deg);
+			-webkit-transform: skewY(3deg);
+			transform: skewY(3deg);
+			-moz-box-shadow: -0.25em 1em #d2985d;
+			-webkit-box-shadow: -0.25em 1em #d2985d;
+			box-shadow: -0.25em 1em #d2985d;
+		}
+		h1 > a{
+			position: relative;
+			display: block;
+			margin: 0 auto 0.5em auto;
+			color: #a2f276;
+			float: right;
+			-ms-transform: skewY(-9deg);
+			-o-transform: skewY(-9deg);
+			-moz-transform: skewY(-9deg);
+			-webkit-transform: skewY(-9deg);
+			transform: skewY(-9deg);
+			text-shadow: 2px 2px #6a4d2f;
+			font-family: 'Love Ya Like A Sister', serif;
+			text-decoration: none;
+		}
+		h1 > a:hover{
+			color: #a2f276;
+			background-color: #d2985d;
+		}
+		h1 > a:active{
+			color: #ecffeb;
+		}
+		.logo{
+			margin: 0.75em 0;
+			width: 75%;
+			max-width: 250px;
+			height: auto;
+			-ms-transform: skewY(-9deg);
+			-o-transform: skewY(-9deg);
+			-moz-transform: skewY(-9deg);
+			-webkit-transform: skewY(-9deg);
+			transform: skewY(-9deg);
+		}
+		.folio-item{
+			position: relative;
+			margin-top: 5em;
+			width: 100%;
+			padding: 1em;
+			background-color: #cfac87;
+			background-clip: padding-box;
+			border: 1em solid #cfac87;
+			border-image: url('https://www.dropbox.com/s/rm4c4qpjl238u7b/borders.svg?raw=1') 9% 9% 9% 9% stretch;
+			/*-moz-box-shadow: -0.25em 1em #d2985d;
+			-webkit-box-shadow: -0.25em 1em #d2985d;
+			box-shadow: -0.25em 1em #d2985d;*/
+		}
+		h2{
+			position: relative;
+			top: -1.75em;
+			padding: 5px;
+			background-color: #a2f276;
+			-ms-transform: rotate(-3deg);
+			-o-transform: rotate(-3deg);
+			-moz-transform: rotate(-3deg);
+			-webkit-transform: rotate(-3deg);
+			transform: rotate(-3deg);
+			-moz-box-shadow: 5px 3px #d2985d; /*#1fd400;*/
+			-webkit-box-shadow: 5px 3px #d2985d; /*#1fd400;*/
+			box-shadow: 5px 3px #d2985d; /*#1fd400;*/
+			margin-bottom: -1em;
+			font-family: 'Love Ya Like A Sister', serif;
+		}
+			h2:hover{
+				-ms-transform: rotate(-1deg);
+				-o-transform: rotate(-1deg);
+				-moz-transform: rotate(-1deg);
+				-webkit-transform: rotate(-1deg);
+				transform: rotate(-1deg);
 			}
-			section{
-				width: 800px;
-				margin: 0px auto 0px auto;
+			h2 > a{
+				font-family: 'Love Ya Like A Sister', serif;
+				color: #6a4d2f;
+			}
+			h2 > a:hover{
+				color: #d2985d;
+			}
+			h2 > a:active{
+				color: #ecffeb;
+			}
+			.year-list{
+				display: inline-block;
+				position: relative;
+				margin-left: 1.5em;
+				margin-right: 0.25em;
+				float: right;
+				font-size: 0.65em;
+			}
+			.float-span{
+				display: block;
+				clear:both;
+			}
+		.folio-desc{
+			position: relative;
+			display: inline-block;
+		}
+		h3{
+			font-family: 'Love Ya Like A Sister', serif;
+		}
+		p{
+			diplay: inline;
+			margin: 0.09em 1em 1em 1em;
+		}
+		ul{
+			margin: 0.09em 1em 1em 1em;
+		}
+		.screenshot{
+			position: relative;
+			display: block;
+			margin: 1em auto;
+			width: 190px;
+			height: 190px;
+			border-radius: 0.25em;
+			border-color: #a2f276;
+			border-style: solid;
+			border-width: 0.75em 0.75em 0.5em 0.5em;
+			background-color: #a2f276;
+			background-position: 0 0;
+			background-size: auto 100%;
+			-moz-box-shadow: -9px 15px #d2985d; /*#1fd400;*/
+			-webkit-box-shadow: -9px 15px #d2985d; /*#1fd400;*/
+			box-shadow: -9px 15px #d2985d; /*#1fd400;*/
+		}
+		#blurb{
+			display: block;
+			position: relative;
+			margin-top: 4em;
+			padding: 1em;
+			background-color: #cfac87;
+			background-color: #a2f276;
+		}
+		.portrait{
+			display:block;
+			margin: 0 auto 2em auto;
+			width: 190px;
+			height: 190px;
+			-moz-box-shadow: -9px 15px #d2985d; /*#1fd400;*/
+			-webkit-box-shadow: -9px 15px #d2985d; /*#1fd400;*/
+			box-shadow: -9px 15px #d2985d; /*#1fd400;*/
+		}
+		#blurb ul{
+			list-style: none;
+		}
+			#blurb ul > li{
+				display: inline-block;
+				margin-right: 0.5em;
+				margin-bottom: 0.5em;
+			}
+		#fun-fact{
+			font-style: oblique;
+		}
+		.soc-med{
+			background-color: #6a4d2f;
+			background-image: url('https://www.dropbox.com/s/t7ot4e5xvxfyy7n/soc_med.svg?raw=1');
+			background-size: 500% 100%;
+			width: 50px;
+			height: 50px;
+			border-radius: 9%;
+			-moz-box-shadow: -0.25em 0.25em #d2985d;
+			-webkit-box-shadow: -0.25em 0.25em #d2985d;
+			box-shadow: -0.25em 0.25em #d2985d;
+		}
+		.soc-med:hover{
+			-ms-transform: rotate(3deg);
+			-o-transform: rotate(3deg);
+			-moz-transform: rotate(3deg);
+			-webkit-transform: rotate(3deg);
+			transform: rotate(3deg);
+			background-color: #cfac87;
+		}
+	/*NAVIGATION*/
+	/*ANIMATIONS*/
+		@-o-keyframes slideshow{
+			0%{background-position: -300px 0;}
+			3%{background-position: -300px 0;}
+			97%{background-position: 100% 0;}
+			100%{background-position: 100% 0;}
+		}
+		@-moz-keyframes slideshow{
+			0%{background-position: -300px 0;}
+			3%{background-position: -300px 0;}
+			97%{background-position: 100% 0;}
+			100%{background-position: 100% 0;}
+		}
+		@-webkit-keyframes slideshow{
+			0%{background-position: -300px 0;}
+			3%{background-position: -300px 0;}
+			97%{background-position: 100% 0;}
+			100%{background-position: 100% 0;}
+		}
+		@keyframes slideshow{
+			0%{background-position: -300px 0;}
+			3%{background-position: -300px 0;}
+			97%{background-position: 100% 0;}
+			100%{background-position: 100% 0;}
+		}
+		.screenshot:hover{
+			width: 200px;
+			height: 200px;
+			-o-animation: slideshow 9s linear infinite alternate;
+			-moz-animation: slideshow 9s linear infinite alternate;
+			-webkit-animation: slideshow 9s linear infinite alternate;
+			animation: slideshow 9s linear infinite alternate;
+			-ms-transform: rotate(1.75deg);
+			-o-transform: rotate(1.75deg);
+			-moz-transform: rotate(1.75deg);
+			-webkit-transform: rotate(1.75deg);
+			transform: rotate(1.75deg);
+		}
+		@-o-keyframes logo-spin{
+			0%{-o-transform: rotate(0deg);}
+			100%{-o-transform: rotate(360deg);}
+		}
+		@-moz-keyframes logo-spin{
+			0%{-moz-transform: rotate(0deg);}
+			100%{-moz-transform: rotate(360deg);}
+		}
+		@-webkit-keyframes logo-spin{
+			0%{-webkit-transform: rotate(0deg);}
+			100%{-webkit-transform: rotate(360deg);}
+		}
+		@keyframes logo-spin{
+			0%{-ms-transform: rotate(0deg);transform: rotate(0deg);}
+			100%{-ms-transform: rotate(360deg);transform: rotate(360deg);}
+		}
+		.logo:hover{
+			width: 80%;
+			max-width: 260px;
+			-o-animation: logo-spin 0.25s linear 0s 1;
+			-moz-animation: logo-spin 0.25s linear 0s 1;
+			-webkit-animation: logo-spin 0.25s linear 0s 1;
+			animation: logo-spin 0.25s linear 0s 1;
+			background-color: #d2985d;
+		}
+	/*MEDIA QUERIES*/
+/*TODO 700PX WIDTH % FOR .SCREENSHOT SIZE*/
+		@media screen and (min-width: 500px)/*, screen and (min-device-width: 500px)*/{
+			h1{
+				font-size: 2em;
+			}
+			.logo{
+				max-width: 300px;
+			}
+			h2{
+				font-size: 2em;
+			}
+			h3{
+				font-size: 1.5em;
+			}
+			p{
+				font-size: 1.25em;
 			}
 			ul{
-				list-style-type: none;
-				margin: 0px;
-				padding: 0px;
-			}
-			a:link{text-decoration: none; color: #CC9966;}
-			a:hover{color: #CC9966;}
-			a:visited{color: #CC9966;}
-			a:active{color #CC9966;}
-			#footer{
-				background-image: url('https://38.media.tumblr.com/eeec87a7308174a03768c7e4e6bf73fd/tumblr_n5ag7f7Hzk1tb9zwto6_r1_1280.jpg');
-				text-align: center;
-				color: #ffffff;
-				margin: 35px auto -15px auto;
-				padding: 15px 0px 25px 0px;
-				width: 800px;
-				border-radius: 25px 25px 0px 0px;
-			}
-			header{
-				background-image: url('https://38.media.tumblr.com/f7c882f1c1fad3dbe7ca23ce780c8727/tumblr_n5ag7f7Hzk1tb9zwto5_r2_1280.jpg');
-				background-size: 100% auto;
-				border: 1px solid #976d77;
-				width: 800px;
-				color: #ffffff;
-				text-align: center;
-				margin-top: -10px;
-				margin-left: -2px;
-				font-size: 18px;
-			}
-/*NAVIGATION*/
-			#mainNavMenu{
-				background-image: url('https://38.media.tumblr.com/eeec87a7308174a03768c7e4e6bf73fd/tumblr_n5ag7f7Hzk1tb9zwto6_r1_1280.jpg');
-				padding:0px;
-				width: 800px;
-				margin: auto;
-			}
-			#mainNavMenu>li{
-				background: #976d77;
-				font-size: 24px;
-				display: inline-block;
-				text-align: center;
-				width: 400px;
-				margin: -1px -2px -1px -2px;
-				padding: 25px 0px 25px 0px;
-			}
-				#mainNavMenu>li>a{
-					color: #ffffff;
-				}
-				#mainNavMenu>li:hover{
-					color: #CC9966;
-					font-size: 28px;
-				}
-				#mainNavMenu>.selected{
-					background: #725359;
-				}
-/*FILTRATION*/
-			#programsDropdown{
-				background: #ffffff;
-				border-radius: 0px 0px 25px 25px;
-				border: 5px solid #cccccc;
-				border-width: 0px 3px 3px 3px;
-				position: absolute;
-				text-align: center;
-				font-size: 18px;
-				padding: 12px 0px 12px 0px;
-				width: 800px;
-				margin-top: 25px;
-				margin-left: -1px;
-			}
-			#programsDropdown li{
-				display: inline-block;
-				padding: 0px 25px 0px 25px;
-			}
-				#programsDropdown>li:hover{
-					color: #DD910D;
-					padding: 0px 30px 0px 30px;
-					font-size: 20px;
-				}
-				#programsDropdown>.selected{
-					background: #cccccc;
-				}
-/*CONTENT*/
-			.content{
-				padding:0px;
-			}
-			#programsBox{
-				margin: 100px 0px;
-			}
-			#contactBox{
-				margin: 15px 0px 0px 0px;
-				display:none;
-				background: rgba(255,249,235,0.75);
-				border-radius: 25px 25px 25px 25px;
-				text-align: center;
-				font-size: 24px;
-			}
-			#contactBox li{
-				padding: 24px;
-			}
-			#contactBox li:hover{
-				padding: 32px;
-				color:#CC9966;
-			}
-			#contactBox li:nth-child(odd){
-				background: #ffffff;
-			}
-			.progListItem{
-				border-radius: 25px 25px 25px 25px;
-				display: block;
-				background: rgba(255,249,235,0.75);
-				margin: 0px;
+				font-size: 1.25em;
 			}
 			.screenshot{
-				border: 3px solid #cccccc;
-				border-radius: 25px;
-				background: #ffffff;
+				width: 225px;
+				height: 225px;
+			}
+			.screenshot:hover{
+				width: 250px;
+				height: 250px;
+			}
+			.soc-med{
+				width: 75px;
+				height: 75px;
+			}
+		}
+		@media screen and (min-width: 601px)/*, screen and (min-device-width: 601px)*/{
+			h1{
 				display: inline-block;
-				margin: 0px 0px 0px 35px;
-				width: 200px;
-				height: 200px;
+				position: relative;
+				float: initial;
+				margin: 0 0 0.5em 25%;
 			}
-			.progListItem:hover .screenshot{
-				border: 3px solid #CC9966;
-				width: 300px;
-				height: 300px;
+			.screenshot{
+				width: 250px;
+				height: 250px;
 			}
-			.progListItem p{
-				border: 3px solid #cccccc;
-				background: #ffffff;
-				display: inline-block;
-				text-align: center;
-				font-size: 24px;
-				padding: 10px;
-				vertical-align:top;
-				margin-left: -5px;
-				width: 500px;
-				color: #cccccc;
+			.screenshot:hover{
+				width: 275px;
+				height: 275px;
 			}
-			.progListItem:hover p{
-				border: 3px solid #CC9966;
-				font-size: 28px;
-				width: 400px;
-				color: #CC9966;
-			}
-			.progListItem h3{
-				border: 3px solid #976d77;
-				border-radius: 25px 25px 0px 0px;
-				color: #ffffff;
-				background: #976d77;
+		}
+		@media screen and (min-width: 801px)/*, screen and (min-device-width: 801px)*/{
+			#title-sect{
 				display: block;
-				text-align: center;
-				font-size: 24px;
-				margin-top: 0px;
-				padding: 15px;
+				position: relative;
+				margin-top: 25px;
+				padding: 0.5em 0 1em 0;
+				width: 84.7%;
+				height: auto;
 			}
-			.progListItem:hover h3{
-				font-size: 32px;
+			h1{
+				font-size: 1.5em;
+				display: inline-block;
+				position: relative;
+				float: initial;
+				height: auto;
+				margin: 0 0 0.5em 0;
+				color: #a2f276;
 			}
-			.floatBreaker{
-				height: 25px;
+			.logo{
+				width: 30%;
+				max-width: 250px;
+				height: auto;
+				margin-top:0.5em;
 			}
-/*PROGRAMS LIST ANIMATION PREVIEWS*/
-			@keyframes moveBG{
-				from { background-position: 0 0; }
-				to { background-position: 100% 0; }
+			.folio-item{
+				left: 5%;
+				width: initial;
+				min-height: 400px;
+				width: 75%;
+				max-width: 1000px;
+				-ms-transform: skewY(1deg);
+				-o-transform: skewY(1deg);
+				-moz-transform: skewY(1deg);
+				-webkit-transform: skewY(1deg);
+				transform: skewY(1deg);
 			}
-			@-webkit-keyframes moveBG{
-				from { background-position: 0 0; }
-				to { background-position: 100% 0; }
+			h2{
+				font-size: 2em;
+				display: inline-block;
+				top: -1.75em;
+				padding: 5px;
+				margin-bottom: -2em;
 			}
-			#kanacontrapp .screenshot{
-				background-image: url('https://38.media.tumblr.com/9d2c1bebfeaad10fcddc3bd2d19661c0/tumblr_n8n89ftS961tb9zwto6_250.png');
-				background-size: auto 50%;
-				background-position: 50% 50%;
-				background-repeat: no-repeat;
+			.folio-item > h3:first-of-type{
+				margin-top: -1em;
 			}
-			#kanacontrapp .screenshot:hover{
-				background-image: url('https://38.media.tumblr.com/5b87263e6941780a0ac769ef47986815/tumblr_n8n89ftS961tb9zwto1_1280.jpg');
-				background-size: auto 100%;
-				background-position: 0px 0px;
-				background-repeat: repeat-x;
-				-webkit-animation: moveBG 5s linear infinite;
-				animation: moveBG 5s linear infinite;
+			.folio-desc{
+				margin-right: 250px;
 			}
-			#shokurain .screenshot{
-				background-image: url('https://31.media.tumblr.com/02cf05dd56b3fc7de58c3a40dba77fcf/tumblr_n8n89ftS961tb9zwto4_400.png');
-				background-size: auto 50%;
-				background-position: 50% 50%;
-				background-repeat: no-repeat;
+			h3{
+				font-size: 1.5em;
 			}
-			#shokurain .screenshot:hover{
-				background-image: url('https://31.media.tumblr.com/e8f3aebb6e46193e6719a555bfddec0f/tumblr_n8n89ftS961tb9zwto5_1280.jpg');
-				background-size: auto 100%;
-				background-position: 0px 0px;
-				background-repeat: repeat-x;
-				-webkit-animation: moveBG 10s linear infinite;
-				animation: moveBG 10s linear infinite;
+			p{
+				font-size: 1.25em;
 			}
-			#wanicomets .screenshot{
-				background-image: url('https://31.media.tumblr.com/20fb1cf11691a88d2b201dc704a30b07/tumblr_n8n89ftS961tb9zwto3_500.gif');
-				background-size: auto 50%;
-				background-position: 50% 50%;
-				background-repeat: no-repeat;
+			ul{
+				font-size: 1.25em;
 			}
-			#wanicomets .screenshot:hover{
-				background-image: url('https://31.media.tumblr.com/09689bf285bdb6ad2affcaf6a5460dd8/tumblr_n8n89ftS961tb9zwto2_1280.jpg');
-				background-size: auto 100%;
-				background-position: 0px 0px;
-				background-repeat: repeat-x;
-				-webkit-animation: moveBG 10s linear infinite;
-				animation: moveBG 10s linear infinite;
+			.screenshot{
+				position: absolute;
+				display: inline-block;
+				margin-left: initial;
+				margin-right: initial;
+				width: 290px;
+				height: 290px;
+				right: -3em;
+				top: 2.5em;
+				-ms-transform: rotate(-1deg);
+				-o-transform: rotate(-1deg);
+				-moz-transform: rotate(-1deg);
+				-webkit-transform: rotate(-1deg);
+				transform: rotate(-1deg);
 			}
-			#kakuwaku .screenshot{
-				background-image: url('https://38.media.tumblr.com/59842dcb499f7e159688675699667aa4/tumblr_n8n89ftS961tb9zwto9_r1_400.jpg');
-				background-size: auto 50%;
-				background-position: 50% 50%;
-				background-repeat: no-repeat;
+				.screenshot:hover{
+					width: 300px;
+					height: 300px;
+					-ms-transform: rotate(1.75deg);
+					-o-transform: rotate(1.75deg);
+					-moz-transform: rotate(1.75deg);
+					-webkit-transform: rotate(1.75deg);
+					transform: rotate(1.75deg);
+				}
+			#blurb{
+				width: 84.7%;
 			}
-			#kakuwaku .screenshot:hover{
-				background-image: url('https://31.media.tumblr.com/1b68688caa603b26af0d23e78d7d0da9/tumblr_n8n89ftS961tb9zwto10_r1_1280.jpg');
-				background-size: auto 100%;
-				background-position: 0px 0px;
-				background-repeat: repeat-x;
-				-webkit-animation: moveBG 10s linear infinite;
-				animation: moveBG 10s linear infinite;
+			.portrait{
+				display: inline-block;
+				width: 25%;
+				max-width: 250px;
+				height: auto;
+				-ms-transform: rotate(-3deg);
+				-o-transform: rotate(-3deg);
+				-moz-transform: rotate(-3deg);
+				-webkit-transform: rotate(-3deg);
+				transform: rotate(-3deg);
+				vertical-align: middle;
 			}
-		</style>
-	</head>
-	<body>
-<!-HEADING AREA, FOR THE CLASSIER WEB-VIEWER->
-		<section>
-			<header>
-				<h1><strong>Rina the Bane <em>Git</em>s-er-done</strong></h1>
-				<h4><em>A quick, little list of projects and hubs.</em></h4>
-			</header>
-<!-NAVIGATION, IF YOU GET LOST->
-			<ul id="mainNavMenu">
-				<li id="navProgs" class="selected" onclick="selectThis(this);"><a href='#'><strong>Programs</strong></a>
-					<ul id="programsDropdown">
-						<li title="all" class="selected" onclick="selectThis(this);"><a href='#'>All</a></li>
-						<li title="wkAPI" onclick="selectThis(this);"><a href="#">Wanikani-API</a></li>
-						<li title="other" onclick="selectThis(this);"><a href="#">Other</a></li>
-					</ul>
-				</li>
-				<li id="navContact" onclick="selectThis(this);"><a href='#'><strong>Contact</strong></a></li>
+			.blurb-desc{
+				display: inline-block;
+				margin-top: 2em;
+				margin-left: 2em;
+				width: 70%;
+				max-width: 900px;
+				vertical-align: top;
+			}
+			#blurb ul > li{
+				margin-right: 1em;
+				margin-bottom: 1em;
+			}
+			.soc-med{
+				width: 75px;
+				height: 75px;
+				border-radius: 9%;
+				-moz-box-shadow: -0.5em 0.5em #d2985d;
+				-webkit-box-shadow: -0.5em 0.5em #d2985d;
+				box-shadow: -0.5em 0.5em #d2985d;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section id="title-sect">
+		<a href="https://trehalose.github.io"><img class="logo" src="https://www.dropbox.com/s/dvuyrfnchqoqhpp/rinathebane.svg?raw=1" alt="Rina the Bane's name and self-grandizing logo" /></a>
+		<h1><a href="https://trehalose.github.io">has a web & design folio!~~~</a></h1>
+		<span class="float-span"></span>
+	</section>
+	<section class="folio-item">
+		<h2><span class="year-list">2015</span>The Blue Koala
+		<span class="float-span"></span>
+		</h2>
+		<div class="folio-desc">
+			<h3>Tools:</h3>
+			<ul>
+				<li>Javacript</li>
+				<li>HTML</li>
+				<li>CSS</li>
 			</ul>
-<!-CONTENT, IT'S GOTTA GO SOMEWHERE->
-			<div id="programsBox" class="content">
-				<ul> <!-PROGRAMS CATEGORIZED BY LIST: wkAPI eduGame other jap ->
-					<li id="wanicomets" class="progListItem all wkAPI edu game jap" onclick="window.location.assign('http://trehalose.github.io/wkcomets/')">
-						<h3>WaniComets</h3>
-						<div class="screenshot"></div>
-						<p>
-							A browser mini-game styled review-system using the Wanikani API and mascot. Guess vocabulary meaning and readings for as long as you can or die trying! <br><strong>Click to check it out!~</strong>
-						</p>
-						<div class="floatBreaker"></div>
-					</li>
-					<li id="shokurain" class="progListItem all wkAPI edu game jap" onclick="window.location.assign('http://trehalose.github.io/shokurain/')">
-						<h3>Shoku食Rain</h3>
-						<div class="screenshot"></div>
-						<p>
-							A browser mini-game styled review-system using the Wanikani API and mascot. Catch food for the insatiably hungry kaijuu, or quickly starve your belly and morale. <br><strong>Click to check it out!~</strong>
-						</p>
-						<div class="floatBreaker"></div>
-					</li>
-					<li id="kakuwaku" class="progListItem all wkAPI edu jap" onclick="window.location.assign('http://trehalose.github.io/kakuwaku/')">
-						<h3>書く枠 (Kakuwaku)</h3>
-						<div class="screenshot"></div>
-						<p>
-							A little Kanji writing-practice page using the Wanikani API and mascot. Practice your Wanikani items by writing them. Also allows you to practice stroking your kana. <br><strong>Click to check it out!~</strong>
-						</p>
-						<div class="floatBreaker"></div>
-					</li>
-					<li id="kanacontrapp" class="progListItem all other edu game jap" onclick="window.location.assign('https://github.com/Trehalose/kcgame/archive/master.zip')">
-						<h3>The Kana ContrAPPtion</h3>
-						<div class="screenshot"></div>
-						<p>
-							XNA-Developed block-matching game to help users practice Japanese kana. <em>Development was cut short, and is in permanent beta.</em> <br><strong>Click to Download the ZIP!~</strong>
-						</p>
-						<div class="floatBreaker"></div>
-					</li>
-				</ul>
-			</div>
-			<div id="contactBox" class="content">
-				<ul id="contactFilter">
-					<li onclick="window.location.assign('https://github.com/Trehalose')"><a href="#">Github</a></li>
-					<li onclick="window.location.assign('http://thegreatyonr.deviantart.com/')"><a href="#">Deviantart</a></li>
-					<li onclick="window.location.assign('https://www.youtube.com/user/TheRinaissanceMan/')"><a href="#">Youtube</a></li>
-					<li onclick="window.location.assign('https://soundcloud.com/thegreatyonr')"><a href="#">Soundcloud</a></li>
-					<li onclick="window.location.assign('http://therinaissance.tumblr.com')"><a href="#">Project Blog</a></li>
-					<li onclick="window.location.assign('https://twitter.com/TheGreatYonR')"><a href="#">Twitter</a></li>
-					<li onclick="window.location.assign('https://plus.google.com/u/2/117581694794631593071/posts')"><a href="#">Google+</a></li>
-				</ul>
-			</div>
-			<footer id="footer">'Honey and Ice' design © Rina the Bane</footer>
-		</section>
-<!-THE SCRIPPS, YO ->
-		<script>
-			function selectThis(caller){	//WHEN SELECTING NAV ITEMS
-				if(caller.id == "navProgs"){	//WHEN PROGAMS BUTTON CLICKED, INDICATE IT, SHOW PROGRAMS FILTER, SHOW PROGRAM LIST, MAKE SURE OTHER STUFF IS HIDDEN
-						caller.classList.add("selected");
-						document.getElementById("navContact").classList.remove('selected');
-						document.getElementById("programsDropdown").style.display="block";
-						document.getElementById("contactBox").style.display="none";
-						document.getElementById("programsBox").style.display="block";
-						document.getElementById("footer").style.position = "relative";
-						document.getElementById("footer").style.marginBottom = "-15px";
-				}
-				else if(caller.id == "navContact"){	//WHEN CONTACT BUTTON CLICKED, INDICATE IT, SHOW CONTACT LIST, MAKE SURE OTHER STUFF IS HIDDEN
-						caller.classList.add("selected");
-						document.getElementById("navProgs").classList.remove('selected');
-						document.getElementById("programsDropdown").style.display="none";
-						document.getElementById("programsBox").style.display="none";
-						document.getElementById("contactBox").style.display="block";
-						document.getElementById("footer").style.position = "relative";
-						document.getElementById("footer").style.marginBottom = "-15px";
-				}
-				else if(caller.parentNode.id == "programsDropdown"){	//MANAGES PROGRAM FILTER, HIDING AND SHOWING LIST ITEMS WITH PROPER KEYWORDS
-					for(var i=0; i<document.getElementById("programsDropdown").childNodes.length; i++){
-						if(document.getElementById("programsDropdown").childNodes[i].tagName === 'LI'){
-							if(caller.title === document.getElementById("programsDropdown").childNodes[i].title){
-									caller.classList.add("selected");
-									for(var j=0; j<document.getElementsByClassName("progListItem").length; j++){
-										if(document.getElementsByClassName("progListItem")[j].classList.contains(caller.title)){
-											document.getElementsByClassName("progListItem")[j].style.display="block";
-										}
-										else{
-											document.getElementsByClassName("progListItem")[j].style.display="none";
-										}
-									}
-							}
-							else{
-									document.getElementById("programsDropdown").childNodes[i].classList.remove("selected");
-							}
-						}
-						else{}
-					}
-					switch(caller.title){
-							case("all"):
-								document.getElementById("footer").style.position = "relative";
-								document.getElementById("footer").style.marginBottom = "-15px";
-								break;
-							case("wkAPI"):
-								document.getElementById("footer").style.position = "relative";
-								document.getElementById("footer").style.marginBottom = "-15px";
-								break;
-							case("other"):
-								document.getElementById("footer").style.position = "relative";
-								document.getElementById("footer").style.marginBottom = "-15px";
-								//document.getElementById("footer").style.position = "absolute";
-								//document.getElementById("footer").style.marginBottom = "0px";
-								break;
-							default:
-								break
-					}
-				}
-				else{}
-			}
-			window.onscroll = function(event){
-				var pageY = window.pageYOffset;
-				if (pageY >= "150") {
-					document.getElementById("mainNavMenu").style.position = "fixed";
-					document.getElementById("mainNavMenu").style.top = "0px";
-					document.getElementById("mainNavMenu").parentNode.firstChild.nextSibling.style.marginBottom = "200px";
-				} else {
-					document.getElementById("mainNavMenu").style.position = "relative";
-					document.getElementById("mainNavMenu").parentNode.firstChild.nextSibling.style.marginBottom = "0px";
-				}
-			}
-		</script>
-	</body>
+			<h3>About this project...</h3>
+			<p>
+				Artist Abdellah Lavert's portfolio website, later adapted for Tumblr theme use. 
+				Worked with artist to consolidate a bright & fun design. 
+				Responsive media queries & minor interactivity called for. 
+				Created simple-to-manage tutorial for the autonomous, but 
+				busy artist to easily upload art to the site without needing 
+				to learn web-markup.
 
+			</p>
+		</div>
+		<img class="screenshot" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" style="background-image:url('https://www.dropbox.com/s/7pkwrgwsc7g0m9j/wintersite_slides.png?raw=1');" alt="PREVIEW OF TITLE"/>
+		<span class="float-span"></span>
+	</section>
+	<section class="folio-item">
+		<h2> <span class="year-list">2015</span> Japanese Study Flashcard App
+			<span class="float-span"></span>
+		</h2>
+		<div class="folio-desc">
+			<h3>Tools:</h3>
+			<ul>
+				<li>Javacript</li>
+				<li>IndexedDB API</li>
+				<li>HTML</li>
+				<li>CSS</li>
+			</ul>
+			<h3>About this project...</h3>
+			<p>
+				Web Application made to ease me & my colleages' language studies. 
+				Worked with learning the IndexedDB API, and created a local 
+				database filled with vocabulary items from our textbook and 
+				class notes. It helped my colleagues, but I got so busy working 
+				on it that I barely had time to use it. 仕方がない、ね～
+			</p>
+		</div>
+		<img class="screenshot" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" style="background-image:url('https://www.dropbox.com/s/ghnr53aemjs9vws/japapp_slides.png?raw=1');" alt="PREVIEW OF TITLE"/>
+		<span class="float-span"></span>
+	</section>
+	<section class="folio-item">
+		<h2> <span class="year-list">2015</span> Shiritori, single-pager
+			<span class="float-span"></span>
+		</h2>
+		<div class="folio-desc">
+			<h3>Tools:</h3>
+			<ul>
+				<li>HTML</li>
+				<li>CSS</li>
+			</ul>
+			<h3>About this project...</h3>
+			<p>
+				An early foray into playing with CSS media queries; it was a 
+				test with minimal design choices where color and shape could 
+				make up for sparse content.
+			</p>
+		</div>
+		<img class="screenshot" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" style="background-image:url('https://www.dropbox.com/s/ecsncoqxszapt44/shiritori_slides.png?raw=1');" alt="PREVIEW OF TITLE"/>
+		<span class="float-span"></span>
+	</section>
+	<section class="folio-item">
+		<h2> <span class="year-list">2014</span> <a href="https://trehalose.github.io/kakuwaku">Wakukaku</a>
+			<span class="float-span"></span>
+		</h2>
+		<div class="folio-desc">
+			<h3>Tools:</h3>
+			<ul>
+				<li>Javascript</li>
+				<li>Wanikani API</li>
+				<li>HTML</li>
+				<li>CSS</li>
+			</ul>
+			<h3>About this project...</h3>
+			<p>
+				Another tool for the Wanikani learning community, this 
+				application was made with HTML5's canvas to help users 
+				practice writing the Kanji they've been learning. It also 
+				allows to practice writing the kanas.
+			</p>
+		</div>
+		<img class="screenshot" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" style="background-image:url('https://www.dropbox.com/s/rdjue1xybfp9byo/wakukaku_slides.png?raw=1');" alt="PREVIEW OF TITLE"/>
+		<span class="float-span"></span>
+	</section>
+	<section class="folio-item">
+		<h2> <span class="year-list">2013</span> <a href="https://trehalose.github.io/shokurain/">Shoku食Rain</a>
+			<span class="float-span"></span>
+		</h2>
+		<div class="folio-desc">
+			<h3>Tools:</h3>
+			<ul>
+				<li>Javascript with JQuery</li>
+				<li>Wanikani API</li>
+				<li>HTML</li>
+				<li>CSS</li>
+			</ul>
+			<h3>About this project...</h3>
+			<p>
+				Another learning experience with web-programming and making 
+				something fun for the Wanikani learning community. A 
+				raindrop-catching kanji review game.
+			</p>
+		</div>
+		<img class="screenshot" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" style="background-image:url('https://www.dropbox.com/s/fkfrqqodriqeb9b/shoku_slides.png?raw=1');" alt="PREVIEW OF TITLE"/>
+		<span class="float-span"></span>
+	</section>
+	<section class="folio-item">
+		<h2> <span class="year-list">2013</span> <a href="https://trehalose.github.io/wkcomets/">Wanicomets</a>
+			<span class="float-span"></span>
+		</h2>
+		<div class="folio-desc">
+			<h3>Tools:</h3>
+			<ul>
+				<li>Javascript with JQuery</li>
+				<li>Wanikani API</li>
+				<li>HTML</li>
+				<li>CSS</li>
+			</ul>
+			<h3>About this project...</h3>
+			<p>
+				A learning experience with web-programming and making something 
+				fun for the Wanikani learning community. A pretty game-styled 
+				vocabulary review system.
+			</p>
+		</div>
+		<img class="screenshot" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" style="background-image:url('https://www.dropbox.com/s/0ay7bvpa04us0ld/wanicomets_slides.png?raw=1');" alt="PREVIEW OF TITLE"/>
+		<span class="float-span"></span>
+	</section>
+	<section class="folio-item">
+		<h2> <span class="year-list">2013</span> <a href="https://github.com/Trehalose/kcgame/archive/master.zip">The Kana ContrAPPtion</a>
+			<span class="float-span"></span>
+		</h2>
+		<div class="folio-desc">
+			<h3>Tools:</h3>
+			<ul>
+				<li>C#</li>
+				<li>XNA Framework</li>
+			</ul>
+			<h3>About this project...</h3>
+			<p>
+				A learning experience with C# and the XNA Framework. 
+				I learned a valuable lesson about the importance of sample 
+				sizes when testing, and the importance of making backups. 
+				I was able to save a copy of the last updated beta version 
+				of the application before all was lost. If you have a compatible 
+				OS (mostly Windows Vista & 7), <a href="">feel free to give it a try</a>!
+			</p>
+		</div>
+		<img class="screenshot" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" style="background-image:url('https://www.dropbox.com/s/yvt9oszcgd9p4ji/kc_slides.png?raw=1');" alt="PREVIEW OF TITLE"/>
+		<span class="float-span"></span>
+	</section>
+	<section id="blurb">
+		<img class="portrait" src="https://www.dropbox.com/s/k61aojxquuzmcmn/ico2015.jpg?raw=1" alt="Portrait of the 2nd-most beautiful person in the world, Rina the Bane; Who is the first, you may ask? It was always YOU, of course!"/>
+		<div class="blurb-desc">
+			<h3>Rina the Bane is...</h3>
+			<p>
+				&mdash;A "maker" by nature. Always with a goal in mind and a project 
+				in heart, Rina the Bane strives to create. Much of her interest 
+				involves fun or educational content around which to make a charming 
+				or memorable experience. She one day hopes to contribute to <em>and</em> to 
+				create startups.<br />
+				She also does other things like Art, Music, and Video editing. <br /><br />
+				<strong>Fun Fact: </strong><span id="fun-fact">She has a pet "Lucky Bamboo" named Misterさん.<span>
+			</p>
+			<h3>Find this phat & sassy she-beast:</h3>
+			<ul>
+				<li><a href="https://twitter.com/TheGreatYonR"><img class="soc-med" style="background-position: 0px 0;" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" alt="At Twitter" title="At Twitter" /></a></li>
+				<li><a href="https://thegreatyonr.deviantart.com"><img class="soc-med" style="background-position: 25% 0;" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" alt="At Deviantart" title="At Deviantart" /></a></li>
+				<li><a href="https://www.youtube.com/user/TheRinaissanceMan"><img class="soc-med" style="background-position: 50% 0;" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" alt="At Youtube" title="At Youtube" /></a></li>
+				<li><a href="https://soundcloud.com/thegreatyonr"><img class="soc-med" style="background-position: 75% 0;" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" alt="At Soundcloud" title="At Soundcloud" /></a></li>
+				<li><a href="https://www.linkedin.com/in/rinathebane"><img class="soc-med" style="background-position: 100% 0;" src="https://www.dropbox.com/s/udogykikeaanqel/trans_img.gif?raw=1" alt="At LinkedIn" title="At LinkedIn" /></a></li>
+			</ul>
+		</div>
+		<span class="float-span"></span>
+	</section>
+	<script>
+		//Upon loading, following snippet randomly fills the #fun-fact element with a fun fact.
+		var facts = [
+			"She has a pet \"Lucky Bamboo\" named Misterさん.",
+			"Her pet plant Misterさん always wears sunglasses.",
+			"She used to do ceramics.",
+			"She is a high-five barbarian.",
+			"She is beloved at her local Taco Bell",
+			"She sometimes plans absurd & intricate surprises to mess with people"
+		];
+		var randomIndex = Math.floor(Math.random()*facts.length);
+		var factoid = document.getElementById("fun-fact");
+		factoid.innerHTML = facts[randomIndex];
+	</script>
+</body>
 </html>
-

@@ -1,0 +1,390 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rina the Bane's List of Projects and Hubs</title>
+		<style>
+			body{
+				background-image: url('https://31.media.tumblr.com/d9a8c269e08a74d3ea4f5256d88e9cf8/tumblr_n5ag7f7Hzk1tb9zwto3_r1_1280.jpg');
+				background-attachment: fixed;
+				height: 100%;
+				font-family: arial, sans-serif;
+				font-size: 18px;
+			}
+			section{
+				width: 800px;
+				margin: 0px auto 0px auto;
+			}
+			ul{
+				list-style-type: none;
+				margin: 0px;
+				padding: 0px;
+			}
+			a:link{text-decoration: none; color: #CC9966;}
+			a:hover{color: #CC9966;}
+			a:visited{color: #CC9966;}
+			a:active{color #CC9966;}
+			#footer{
+				background-image: url('https://38.media.tumblr.com/eeec87a7308174a03768c7e4e6bf73fd/tumblr_n5ag7f7Hzk1tb9zwto6_r1_1280.jpg');
+				text-align: center;
+				color: #ffffff;
+				margin: 35px auto -15px auto;
+				padding: 15px 0px 25px 0px;
+				width: 800px;
+				border-radius: 25px 25px 0px 0px;
+			}
+			header{
+				background-image: url('https://38.media.tumblr.com/f7c882f1c1fad3dbe7ca23ce780c8727/tumblr_n5ag7f7Hzk1tb9zwto5_r2_1280.jpg');
+				background-size: 100% auto;
+				border: 1px solid #976d77;
+				width: 800px;
+				color: #ffffff;
+				text-align: center;
+				margin-top: -10px;
+				margin-left: -2px;
+				font-size: 18px;
+			}
+/*NAVIGATION*/
+			#mainNavMenu{
+				background-image: url('https://38.media.tumblr.com/eeec87a7308174a03768c7e4e6bf73fd/tumblr_n5ag7f7Hzk1tb9zwto6_r1_1280.jpg');
+				padding:0px;
+				width: 800px;
+				margin: auto;
+			}
+			#mainNavMenu>li{
+				background: #976d77;
+				font-size: 24px;
+				display: inline-block;
+				text-align: center;
+				width: 400px;
+				margin: -1px -2px -1px -2px;
+				padding: 25px 0px 25px 0px;
+			}
+				#mainNavMenu>li>a{
+					color: #ffffff;
+				}
+				#mainNavMenu>li:hover{
+					color: #CC9966;
+					font-size: 28px;
+				}
+				#mainNavMenu>.selected{
+					background: #725359;
+				}
+/*FILTRATION*/
+			#programsDropdown{
+				background: #ffffff;
+				border-radius: 0px 0px 25px 25px;
+				border: 5px solid #cccccc;
+				border-width: 0px 3px 3px 3px;
+				position: absolute;
+				text-align: center;
+				font-size: 18px;
+				padding: 12px 0px 12px 0px;
+				width: 800px;
+				margin-top: 25px;
+				margin-left: -1px;
+			}
+			#programsDropdown li{
+				display: inline-block;
+				padding: 0px 25px 0px 25px;
+			}
+				#programsDropdown>li:hover{
+					color: #DD910D;
+					padding: 0px 30px 0px 30px;
+					font-size: 20px;
+				}
+				#programsDropdown>.selected{
+					background: #cccccc;
+				}
+/*CONTENT*/
+			.content{
+				padding:0px;
+			}
+			#programsBox{
+				margin: 100px 0px;
+			}
+			#contactBox{
+				margin: 15px 0px 0px 0px;
+				display:none;
+				background: rgba(255,249,235,0.75);
+				border-radius: 25px 25px 25px 25px;
+				text-align: center;
+				font-size: 24px;
+			}
+			#contactBox li{
+				padding: 24px;
+			}
+			#contactBox li:hover{
+				padding: 32px;
+				color:#CC9966;
+			}
+			#contactBox li:nth-child(odd){
+				background: #ffffff;
+			}
+			.progListItem{
+				border-radius: 25px 25px 25px 25px;
+				display: block;
+				background: rgba(255,249,235,0.75);
+				margin: 0px;
+			}
+			.screenshot{
+				border: 3px solid #cccccc;
+				border-radius: 25px;
+				background: #ffffff;
+				display: inline-block;
+				margin: 0px 0px 0px 35px;
+				width: 200px;
+				height: 200px;
+			}
+			.progListItem:hover .screenshot{
+				border: 3px solid #CC9966;
+				width: 300px;
+				height: 300px;
+			}
+			.progListItem p{
+				border: 3px solid #cccccc;
+				background: #ffffff;
+				display: inline-block;
+				text-align: center;
+				font-size: 24px;
+				padding: 10px;
+				vertical-align:top;
+				margin-left: -5px;
+				width: 500px;
+				color: #cccccc;
+			}
+			.progListItem:hover p{
+				border: 3px solid #CC9966;
+				font-size: 28px;
+				width: 400px;
+				color: #CC9966;
+			}
+			.progListItem h3{
+				border: 3px solid #976d77;
+				border-radius: 25px 25px 0px 0px;
+				color: #ffffff;
+				background: #976d77;
+				display: block;
+				text-align: center;
+				font-size: 24px;
+				margin-top: 0px;
+				padding: 15px;
+			}
+			.progListItem:hover h3{
+				font-size: 32px;
+			}
+			.floatBreaker{
+				height: 25px;
+			}
+/*PROGRAMS LIST ANIMATION PREVIEWS*/
+			@keyframes moveBG{
+				from { background-position: 0 0; }
+				to { background-position: 100% 0; }
+			}
+			@-webkit-keyframes moveBG{
+				from { background-position: 0 0; }
+				to { background-position: 100% 0; }
+			}
+			#kanacontrapp .screenshot{
+				background-image: url('https://38.media.tumblr.com/9d2c1bebfeaad10fcddc3bd2d19661c0/tumblr_n8n89ftS961tb9zwto6_250.png');
+				background-size: auto 50%;
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+			}
+			#kanacontrapp .screenshot:hover{
+				background-image: url('https://38.media.tumblr.com/5b87263e6941780a0ac769ef47986815/tumblr_n8n89ftS961tb9zwto1_1280.jpg');
+				background-size: auto 100%;
+				background-position: 0px 0px;
+				background-repeat: repeat-x;
+				-webkit-animation: moveBG 5s linear infinite;
+				animation: moveBG 5s linear infinite;
+			}
+			#shokurain .screenshot{
+				background-image: url('https://31.media.tumblr.com/02cf05dd56b3fc7de58c3a40dba77fcf/tumblr_n8n89ftS961tb9zwto4_400.png');
+				background-size: auto 50%;
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+			}
+			#shokurain .screenshot:hover{
+				background-image: url('https://31.media.tumblr.com/e8f3aebb6e46193e6719a555bfddec0f/tumblr_n8n89ftS961tb9zwto5_1280.jpg');
+				background-size: auto 100%;
+				background-position: 0px 0px;
+				background-repeat: repeat-x;
+				-webkit-animation: moveBG 10s linear infinite;
+				animation: moveBG 10s linear infinite;
+			}
+			#wanicomets .screenshot{
+				background-image: url('https://31.media.tumblr.com/20fb1cf11691a88d2b201dc704a30b07/tumblr_n8n89ftS961tb9zwto3_500.gif');
+				background-size: auto 50%;
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+			}
+			#wanicomets .screenshot:hover{
+				background-image: url('https://31.media.tumblr.com/09689bf285bdb6ad2affcaf6a5460dd8/tumblr_n8n89ftS961tb9zwto2_1280.jpg');
+				background-size: auto 100%;
+				background-position: 0px 0px;
+				background-repeat: repeat-x;
+				-webkit-animation: moveBG 10s linear infinite;
+				animation: moveBG 10s linear infinite;
+			}
+			#kakuwaku .screenshot{
+				background-image: url('https://38.media.tumblr.com/59842dcb499f7e159688675699667aa4/tumblr_n8n89ftS961tb9zwto9_r1_400.jpg');
+				background-size: auto 50%;
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+			}
+			#kakuwaku .screenshot:hover{
+				background-image: url('https://31.media.tumblr.com/1b68688caa603b26af0d23e78d7d0da9/tumblr_n8n89ftS961tb9zwto10_r1_1280.jpg');
+				background-size: auto 100%;
+				background-position: 0px 0px;
+				background-repeat: repeat-x;
+				-webkit-animation: moveBG 10s linear infinite;
+				animation: moveBG 10s linear infinite;
+			}
+		</style>
+	</head>
+	<body>
+<!-HEADING AREA, FOR THE CLASSIER WEB-VIEWER->
+		<section>
+			<header>
+				<h1><strong>Rina the Bane <em>Git</em>s-er-done</strong></h1>
+				<h4><em>A quick, little list of projects and hubs.</em></h4>
+			</header>
+<!-NAVIGATION, IF YOU GET LOST->
+			<ul id="mainNavMenu">
+				<li id="navProgs" class="selected" onclick="selectThis(this);"><a href='#'><strong>Programs</strong></a>
+					<ul id="programsDropdown">
+						<li title="all" class="selected" onclick="selectThis(this);"><a href='#'>All</a></li>
+						<li title="wkAPI" onclick="selectThis(this);"><a href="#">Wanikani-API</a></li>
+						<li title="other" onclick="selectThis(this);"><a href="#">Other</a></li>
+					</ul>
+				</li>
+				<li id="navContact" onclick="selectThis(this);"><a href='#'><strong>Contact</strong></a></li>
+			</ul>
+<!-CONTENT, IT'S GOTTA GO SOMEWHERE->
+			<div id="programsBox" class="content">
+				<ul> <!-PROGRAMS CATEGORIZED BY LIST: wkAPI eduGame other jap ->
+					<li id="wanicomets" class="progListItem all wkAPI edu game jap" onclick="window.location.assign('http://trehalose.github.io/wkcomets/')">
+						<h3>WaniComets</h3>
+						<div class="screenshot"></div>
+						<p>
+							A browser mini-game styled review-system using the Wanikani API and mascot. Guess vocabulary meaning and readings for as long as you can or die trying! <br><strong>Click to check it out!~</strong>
+						</p>
+						<div class="floatBreaker"></div>
+					</li>
+					<li id="shokurain" class="progListItem all wkAPI edu game jap" onclick="window.location.assign('http://trehalose.github.io/shokurain/')">
+						<h3>Shoku食Rain</h3>
+						<div class="screenshot"></div>
+						<p>
+							A browser mini-game styled review-system using the Wanikani API and mascot. Catch food for the insatiably hungry kaijuu, or quickly starve your belly and morale. <br><strong>Click to check it out!~</strong>
+						</p>
+						<div class="floatBreaker"></div>
+					</li>
+					<li id="kakuwaku" class="progListItem all wkAPI edu jap" onclick="window.location.assign('http://trehalose.github.io/kakuwaku/')">
+						<h3>書く枠 (Kakuwaku)</h3>
+						<div class="screenshot"></div>
+						<p>
+							A little Kanji writing-practice page using the Wanikani API and mascot. Practice your Wanikani items by writing them. Also allows you to practice stroking your kana. <br><strong>Click to check it out!~</strong>
+						</p>
+						<div class="floatBreaker"></div>
+					</li>
+					<li id="kanacontrapp" class="progListItem all other edu game jap" onclick="window.location.assign('https://github.com/Trehalose/kcgame/archive/master.zip')">
+						<h3>The Kana ContrAPPtion</h3>
+						<div class="screenshot"></div>
+						<p>
+							XNA-Developed block-matching game to help users practice Japanese kana. <em>Development was cut short, and is in permanent beta.</em> <br><strong>Click to Download the ZIP!~</strong>
+						</p>
+						<div class="floatBreaker"></div>
+					</li>
+				</ul>
+			</div>
+			<div id="contactBox" class="content">
+				<ul id="contactFilter">
+					<li onclick="window.location.assign('https://github.com/Trehalose')"><a href="#">Github</a></li>
+					<li onclick="window.location.assign('http://thegreatyonr.deviantart.com/')"><a href="#">Deviantart</a></li>
+					<li onclick="window.location.assign('https://www.youtube.com/user/TheRinaissanceMan/')"><a href="#">Youtube</a></li>
+					<li onclick="window.location.assign('https://soundcloud.com/thegreatyonr')"><a href="#">Soundcloud</a></li>
+					<li onclick="window.location.assign('http://therinaissance.tumblr.com')"><a href="#">Project Blog</a></li>
+					<li onclick="window.location.assign('https://twitter.com/TheGreatYonR')"><a href="#">Twitter</a></li>
+					<li onclick="window.location.assign('https://plus.google.com/u/2/117581694794631593071/posts')"><a href="#">Google+</a></li>
+				</ul>
+			</div>
+			<footer id="footer">'Honey and Ice' design © Rina the Bane</footer>
+		</section>
+<!-THE SCRIPPS, YO ->
+		<script>
+			function selectThis(caller){	//WHEN SELECTING NAV ITEMS
+				if(caller.id == "navProgs"){	//WHEN PROGAMS BUTTON CLICKED, INDICATE IT, SHOW PROGRAMS FILTER, SHOW PROGRAM LIST, MAKE SURE OTHER STUFF IS HIDDEN
+						caller.classList.add("selected");
+						document.getElementById("navContact").classList.remove('selected');
+						document.getElementById("programsDropdown").style.display="block";
+						document.getElementById("contactBox").style.display="none";
+						document.getElementById("programsBox").style.display="block";
+						document.getElementById("footer").style.position = "relative";
+						document.getElementById("footer").style.marginBottom = "-15px";
+				}
+				else if(caller.id == "navContact"){	//WHEN CONTACT BUTTON CLICKED, INDICATE IT, SHOW CONTACT LIST, MAKE SURE OTHER STUFF IS HIDDEN
+						caller.classList.add("selected");
+						document.getElementById("navProgs").classList.remove('selected');
+						document.getElementById("programsDropdown").style.display="none";
+						document.getElementById("programsBox").style.display="none";
+						document.getElementById("contactBox").style.display="block";
+						document.getElementById("footer").style.position = "relative";
+						document.getElementById("footer").style.marginBottom = "-15px";
+				}
+				else if(caller.parentNode.id == "programsDropdown"){	//MANAGES PROGRAM FILTER, HIDING AND SHOWING LIST ITEMS WITH PROPER KEYWORDS
+					for(var i=0; i<document.getElementById("programsDropdown").childNodes.length; i++){
+						if(document.getElementById("programsDropdown").childNodes[i].tagName === 'LI'){
+							if(caller.title === document.getElementById("programsDropdown").childNodes[i].title){
+									caller.classList.add("selected");
+									for(var j=0; j<document.getElementsByClassName("progListItem").length; j++){
+										if(document.getElementsByClassName("progListItem")[j].classList.contains(caller.title)){
+											document.getElementsByClassName("progListItem")[j].style.display="block";
+										}
+										else{
+											document.getElementsByClassName("progListItem")[j].style.display="none";
+										}
+									}
+							}
+							else{
+									document.getElementById("programsDropdown").childNodes[i].classList.remove("selected");
+							}
+						}
+						else{}
+					}
+					switch(caller.title){
+							case("all"):
+								document.getElementById("footer").style.position = "relative";
+								document.getElementById("footer").style.marginBottom = "-15px";
+								break;
+							case("wkAPI"):
+								document.getElementById("footer").style.position = "relative";
+								document.getElementById("footer").style.marginBottom = "-15px";
+								break;
+							case("other"):
+								document.getElementById("footer").style.position = "relative";
+								document.getElementById("footer").style.marginBottom = "-15px";
+								//document.getElementById("footer").style.position = "absolute";
+								//document.getElementById("footer").style.marginBottom = "0px";
+								break;
+							default:
+								break
+					}
+				}
+				else{}
+			}
+			window.onscroll = function(event){
+				var pageY = window.pageYOffset;
+				if (pageY >= "150") {
+					document.getElementById("mainNavMenu").style.position = "fixed";
+					document.getElementById("mainNavMenu").style.top = "0px";
+					document.getElementById("mainNavMenu").parentNode.firstChild.nextSibling.style.marginBottom = "200px";
+				} else {
+					document.getElementById("mainNavMenu").style.position = "relative";
+					document.getElementById("mainNavMenu").parentNode.firstChild.nextSibling.style.marginBottom = "0px";
+				}
+			}
+		</script>
+	</body>
+
+</html>
+
