@@ -1,0 +1,620 @@
+﻿<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8" name="robots" content="noindex,nofollow" />
+		<title>Rina the Bane's JapII Flashcard App</title>
+		<link rel="stylesheet" type="text/css" href="flashapp.css" />
+		<link href='http://fonts.googleapis.com/css?family=Righteous|Roboto+Condensed' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<!--REAL FIRST WINDOW-->
+		<section class="window" id="warning">
+			<div class="close">X</div>
+			<h1>WARNING</h1>
+			<div class="window-contents">
+				<p><em>This is a web application that uses Javascript and the IndexedDB API.</em> </br>
+				The purpose is to allow users to use the application
+				and quickly save their review data on their own system for later use. 
+				Please turn on Javascript, update your browser, and use at your own comfort-level!</p>
+				<button id="agreeTerms">Enter</button>
+			</div>
+		</section>
+		
+		
+		
+		
+		
+		
+		<script src="vocab.js"></script>
+		<script>
+		document.addEventListener("DOMContentLoaded",function(){
+		//VARIABLES
+			//var vocabList is the linked vocab obj array in the linked JS
+			var dbList = new Array();
+			var countdown = undefined;
+			var time = 0;
+			var currentItems = new Array();
+			var currentItemsProgress = new Array();
+			var queuedItems =  new Array();
+			var flashGiven = undefined;
+			var postItems = new Array();
+			var currentItem = undefined;
+			var reviewParams = undefined;
+			var kanaOnly = false;
+			var timed = false;
+			//Review items status: how many times passed in a row, etc (its timer/respawn rate).
+			
+
+			
+		//TIMER FUNCTIONS
+			//Review begin countdown function
+			function countDown(){
+				if(time < 3){
+					document.body.removeChild(document.getElementById("countdown"));
+				}
+				if(time > 0){
+					//TODO EDIT COUNTDOWN WINDOW
+					makeWin("countdown", "Seconds until start...", "<h2 class='timer'>"+time+"</h2><p>Get ready~!!</p>");
+					time--;
+				}
+				else{
+					clearInterval(countdown);
+					time = 0;
+					flashcardGenerate(true);
+				}
+			}
+			function reviewTimer(){
+				if(time > 0){
+					time--;
+					document.body.removeChild(document.getElementById("flashcardFront"));
+					flashcardWin();
+				}
+				else{
+					clearInterval(countdown);
+					time = 0;
+					document.body.removeChild(document.getElementById("flashcardFront"));
+					processAnswer(false);
+				}
+			}
+			
+			//APPLICATION PARAMETERS FORM.
+			function appForm(){
+				var innerConts = "<form><h3>Book chapters I'll review:</h3><select name='whichChapter' id='whichChapter'>";
+				for(var i = 1; i <= 23; i++){
+					innerConts += "<option value='" + i + "'>Chapter " + i + "</option>";
+				}
+				innerConts += "<option value='all'>All Chapters</option></select>";
+				innerConts += "<input type='checkbox' name='prevChs' id='prevChs' /><label class='checkbox' for='prevChs'>Include all preceding chapters</label>";
+				innerConts += "<h3>Parts of speech(POS) I will review: </h3><select name='vocabType' id='vocabType'><option value='allPOS'>All POS</option>";
+				for(var j = 0; j < vType.length; j++){
+					innerConts += "<option value='" + vType[j] + "'>" + vType[j] + "s</option>";
+				}
+				innerConts += "</select><h3>Other options I want: </h3><input type='checkbox' name='kanaOnly' id='kanaOnly' /><label class='checkbox' for='kanaOnly'>I want to review only in kana. (Don't show kanji)</label>";
+				innerConts += "<input type='checkbox' name='timedReview' id='timedReview' /><label class='checkbox' for='timedReview'>I want this review timed.</label></form><button id='startReviews'>Review!</button>";
+				makeWin("paramForm", "What kind of review would you like?...", innerConts);
+			}
+			function applyParams(parameters){
+				if(parameters.kanaOnly == true){kanaOnly = true;}
+				else{kanaOnly = false;}
+				if(parameters.timed == true){timed = true;}
+				else{timed = false;}
+				for(var p = 0; p < dbList.length; p++){
+					if(parameters.include == true){
+						if(dbList[p].chapter <= parameters.ch && dbList[p].chapter > 0){
+							if((parameters.pos == "allPOS") || (dbList[p].type == parameters.pos)){
+								currentItems.push(dbList[p]);
+							}
+						}
+					}
+					else{
+						if(dbList[p].chapter == parameters.ch){
+							if((parameters.pos == "allPOS") || (dbList[p].type == parameters.pos)){
+								currentItems.push(dbList[p]);
+							}
+						}
+					}
+				}
+				queueListInit();
+				for(var q = 0; q < currentItems.length; q++){
+					currentItemsProgress.push({meaning: false, reading: false, queue: 0});
+				}
+			}
+			
+			
+			
+			//makeWin(winID, h1Inner, contsInner);
+			function makeWin(winID, h1Inner, contsInner){
+				var theConts = document.createElement("div");
+				var theH1 = document.createElement("h1");
+				var theWin = document.createElement("section");
+				theWin.classList.add("window");
+				theWin.id = winID;
+				theWin.innerHTML = "<div class='close'>X</div>";
+				theConts.classList.add("window-contents");
+				theH1.innerHTML = h1Inner;
+				theConts.innerHTML = contsInner;
+				theWin.appendChild(theH1);
+				theWin.appendChild(theConts);
+				document.body.insertBefore(theWin, document.body.firstElementChild);
+				
+			}
+			
+			//function for creating item queue
+			function queueCreate(e, item){
+				console.log(item + " WQshaisjdadjasiodaofda");
+				var multiple = (item.score *(400000/*7mins*/) + 50000/*1min*/); //1800000 = 30min
+				var prevTime;
+				if(item.dueDate != null){
+					prevTime= item.dueDate;
+				}
+				else{
+					prevTime = item.updated.getTime();
+				}
+				item.dueDate = prevTime + multiple;
+				queuedItems.push(item);
+				for(var z = 0; z < currentItems.length; z++){
+					if(item == currentItems[z]){
+						currentItems.splice(z,1)
+						currentItemsProgress.splice(z,1);
+					}
+				}
+				//console.log(item + " 2 ");
+				console.log(prevTime + " is due " + item.dueDate);
+				updateData(e, item);
+				//console.log(queuedItems);
+			}
+			//function for checking item queue
+			function queueCheck(){
+				var currentTime = new Date();
+				for(var z = 0; z < queuedItems.length; z++){
+					if(queuedItems[z].dueDate <= currentTime.getTime()){
+						console.log(queuedItems[z].dueDate +" and "+ currentTime.getTime());
+						queuedItems[z].dueDate = null;
+						currentItems.push(queuedItems[z]);
+						currentItemsProgress.push({meaning: false, reading: false, queue: 0});
+						queuedItems.splice(z,1);
+					}
+					else{
+					console.log(queuedItems[z].dueDate +" AND "+ currentTime.getTime());}
+				}
+				//console.log("queuedItems");
+			}
+			function queueListInit(){
+				for(var z = 0; z < currentItems.length; z++){
+					if(currentItems[z].dueDate==null){}
+					else{
+						queuedItems.push(currentItems[z]);
+						currentItems.splice(z,1);
+						currentItemsProgress.splice(z,1);
+					}
+				}
+			}
+			
+			
+			
+			//function for loading review items
+			function flashcardGenerate(firstGen){
+				queueCheck();
+				//console.log(currentItems);
+				if(currentItems.length > 0){
+					currentItem = currentItems[generateItem(currentItems,firstGen)]; //TODO SWITCH TO currentItems VAR
+					flashGiven = generateFlash(currentItem);
+					if(timed == true){
+						time = 5;
+						countdown = setInterval(reviewTimer,1000);
+					}
+					flashcardWin();
+				}
+				else{
+					reviewOver()
+				}
+			}
+			function flashcardWin(){//TODO ADD WINDOW ITEMS
+				var innerH1 = undefined;
+				var innerConts = undefined;
+				//TODO, IF TIMER PARAM...OUT OF TIME: SAVE SCORE REGEN
+				if(timed == true){
+					innerConts = "<p  class='timer'>" + time + "sec to guess</p>";
+				}
+				else{
+					innerConts = "";
+				}
+				if(flashGiven == "reading"){
+					innerH1 = "Guess the <strong>meaning</strong>";
+					//TODO: CHECK IF isKanji PARAM
+					innerConts += "<h2>Reading: </h2><p>" + currentItem.kana + "</p>";
+					//TODO ADD CONTENTS
+				}
+				else{
+					innerH1 = "Guess the <strong>reading</strong>";
+					innerConts += "<h2>Meaning: </h2><ul>"
+					for(var i = 0; i < currentItem.meaning.length; i++){
+						innerConts += "<li>" + currentItem.meaning[i] + "</li>";
+					}
+					innerConts += "</ul>";
+					//TODO ADD CONTENTS
+				}
+				innerConts += "<button id='yButton'>I know this!</button><button id='nButton'>I give up...</button>";
+				makeWin("flashcardFront", innerH1, innerConts);
+				//reviewWin(currentItem, true);
+			}
+			//GIVES ANSWER TO FLASHCARD
+			function answer(score){
+				var h1Msg = undefined;
+				if(score === true){
+					h1Msg = "Good Job!";
+					//TODO ADD SCORE BITS TO ARRAY
+				}
+				else{
+					h1Msg = "Keep studying!";
+				}
+				var kanji = undefined;
+				var example = undefined;
+				if(currentItem.kanji === ""){kanji = "N/A";}
+				else{kanji = currentItem.kanji;}
+				if(currentItem.example[0] === ""){example  = "<ul><li>N/A</li></li></ul>";}
+				else{
+					example = "<ul>";
+					for(var i = 0; i < currentItem.example.length; i++){
+						example += "<li>" + currentItem.example[i] + "</li>";
+					}
+					example += "</ul>";
+				}
+				var theMeans = "<ul>";
+				for(var i = 0; i < currentItem.meaning.length; i++){
+					theMeans += "<li>" + currentItem.meaning[i] + "</li>";
+				}
+				theMeans += "</ul>";
+				var innerConts = "<h3>Kanji: </h3><p>" + kanji + "</p><h3>Kana: </h3><p>" + currentItem.kana + "</p><h3>Meanings: </h3>" + theMeans +"<h3>Parts of Speech: </h3> <p>" + currentItem.type + "</p><h3>Example Sentence: </h3>" + example + "<button id='nextButton'>Next~</button>";
+				makeWin("flashcardBack", h1Msg, innerConts);
+			}
+			
+			
+		//REVIEW ITEM FUNCTIONS
+			//TODO randomly generate review item based on review form parameters
+			function generateItem(list,firstGen){
+				var randyNewman = undefined;
+				if(firstGen){
+					randyNewman = Math.floor(Math.random()*(list.length));
+				}
+				else{
+					randyNewman = Math.floor((Math.random()*(list.length)));
+				}
+				if((currentItemsProgress[randyNewman].queue == 0) || (currentItems.length == 1)){
+					return randyNewman;
+				}
+				else{
+					//console.log(currentItemsProgress[randyNewman].queue);
+					var badNewman = randyNewman;
+					while(randyNewman == badNewman){
+						randyNewman = Math.floor((Math.random()*(list.length)));
+					}
+					currentItemsProgress[badNewman].queue--;
+					return randyNewman;
+				}
+			}
+			function generateFlash(item){
+				var randyNowman = Math.floor((Math.random()*2));
+				var theFlash = undefined;
+				for(var x = 0; x < currentItems.length; x++){
+					if((item.kana == currentItems[x].kana) && (item.chapter == currentItems[x].chapter)){
+						if((currentItemsProgress[x].reading == true)&&(currentItemsProgress[x].meaning == false)){
+							theFlash = "reading";
+						}
+						else if((currentItemsProgress[x].meaning == true)&&(currentItemsProgress[x].reading == false)){
+							theFlash = "meaning";
+						}
+						else{
+							if(randyNowman == 0){
+								theFlash = "reading";
+							}
+							else{
+								theFlash = "meaning";
+							}
+						}
+					}
+				}
+				return theFlash;
+			}
+			//TODO Respawn rate count-down function, based on items passed variable
+			//TODO: ANSWER CORRECT OR INCORRECT FUNCTION, if wrong, remove X from passed variable
+			function processAnswer(correctness, e){
+				for(var x = 0; x < currentItems.length; x++){
+					if((currentItem.kana == currentItems[x].kana) && (currentItem.chapter == currentItems[x].chapter)){
+						if(correctness==true){
+							if(flashGiven == "meaning"){
+								currentItems[x].score += 0.5;
+								currentItemsProgress[x].reading = true;
+								if((currentItemsProgress[x].reading == true)&&(currentItemsProgress[x].meaning == true)){
+									//TODO ADD TO POSTLIST REMOVE FROM CURRENTITEMLIST;
+									postItems.push(currentItem);
+									currentItems.splice(x,1);
+									currentItemsProgress.splice(x,1);
+									queueCreate(e, currentItem);
+									if(currentItems.length==0){
+										reviewOver();
+									}
+									else{
+										answer(true);
+									}
+								}
+								else{
+									updateData(e, currentItem);
+									answer(true);
+								}
+								flashGiven = undefined;
+							}
+							else{
+								currentItems[x].score += 0.5;
+								currentItemsProgress[x].meaning = true;
+								if((currentItemsProgress[x].reading == true)&&(currentItemsProgress[x].meaning == true)){
+									//TODO ADD TO POSTLIST REMOVE FROM CURRENTITEMLIST;
+									postItems.push(currentItem);
+									currentItems.splice(x,1);
+									currentItemsProgress.splice(x,1);
+									queueCreate(e, currentItem);
+									if(currentItems.length==0){
+										reviewOver();
+									}
+									else{
+										answer(true);
+									}
+								}
+								else{
+									updateData(e, currentItem);
+									answer(true);
+								}
+								flashGiven = undefined;
+							}
+						}
+						else{
+							if(currentItem.score > 0){
+								currentItem.score--;
+							}
+							else{}
+							answer(false);
+							flashGiven = undefined;
+							//currentItemsProgress[x].queue++;
+							queueCreate(e, currentItem);
+						}
+					}
+					else{}
+				}
+			}
+			//TODO: Review timer function
+			function reviewOver(){
+				//OPEN NEW SESSION
+				currentItems = new Array();
+				currentItemsProgress = new Array();
+				flashGiven = undefined;
+				currentItem = undefined;
+				reviewParams = undefined;
+				kanaOnly = false;
+				timed = false;
+				//REVIEW WINDOW OF REVIEW SESSION
+				makeWin("reviewReview", "Review Over", "<p>Good job finishing the review session! Try again if you wish, otherwise, take a nice break and KEEP IT REAL~!</p> <button id='endSession'>Bye-bye!</button>");
+			}
+			
+			
+		//INDEXEDDB, STORE AND COLLECT DATABASE IN BROWSER
+		var isIDBSupported = false;
+		var db;
+			if("indexedDB" in window){
+				isIDBSupported = true;
+			}
+			if(isIDBSupported === true){
+				var openRequest = indexedDB.open("test_v1",1);
+				openRequest.onupgradeneeded = function(e){
+					//console.log("Running upgradeneeded...");
+					var thisDB = e.target.result;
+					if(!thisDB.objectStoreNames.contains("vocabs")){
+						thisDB.createObjectStore("vocabs",{keyPath:"id"});
+					}
+					else{
+						//console.log("vocab DB was already created");
+					}
+				};
+				openRequest.onsuccess = function(e){
+					//console.log("Yatta!");
+					db = e.target.result;
+					
+					//TODO: EVENT LISTENERS TO CREATE, READ, UPDATE, DELETE DBS
+					createData(e);
+					readAllData(e);
+				//CLICKING BUTTONS FOR WINDOWS FUNCTION LIST
+					document.body.addEventListener("click", function(e){
+						if(e.target.tagName=="BUTTON"){
+							switch(e.target.id){
+								case("agreeTerms"):
+									document.body.removeChild(document.getElementById("warning"));
+									//TODO EDIT PARAM AND RULES WINDOWS
+									makeWin("appRules", "How to use this program", "<p>Choose the chapter, POS, and other options you want to use  during your review. Then review until the session is complete. When you have reviewed all words, the vocabulary will reappear in later sessions when it is due again. Otherwise, it will not appear. Please do your best and contact Rina in class if you have any problems!</p>");
+									appForm();
+								break;
+								case("startReviews"):
+									applyParams({ch: document.getElementById("whichChapter").value, include: document.getElementById("prevChs").checked, pos: document.getElementById("vocabType").value, kanaOnly: document.getElementById("kanaOnly").checked, timed: document.getElementById("timedReview").checked});
+									//TODO: on click application form button, go to count down screen, beginning
+									document.body.removeChild(document.getElementById("paramForm"));
+									document.body.removeChild(document.getElementById("appRules"));
+									time = 3;
+									countdown = setInterval(countDown,1000);
+								break;
+								case("yButton"):
+									document.body.removeChild(document.getElementById("flashcardFront"));
+									processAnswer(true);
+								break;
+								case("nButton"):
+									document.body.removeChild(document.getElementById("flashcardFront"));
+									processAnswer(false);
+								break;
+								case("nextButton"):
+									document.body.removeChild(document.getElementById("flashcardBack"));
+									flashcardGenerate(false);
+								break;
+								case("continue"):
+									document.body.removeChild(document.getElementById("pauseWin"));
+									//TODO: RESTART TIMER
+									//TODO: DISPLAY ELEMENTS WITH .close CLASS
+									document.body.firstElementChild.firstElementChild.style.visibility = "visible";
+								break;
+								case("quit"):
+									currentItems = new Array();
+									currentItemsProgress = new Array();
+									flashGiven = undefined;
+									currentItem = undefined;
+									reviewParams = undefined;
+									kanaOnly = false;
+									timed = false;
+									document.body.removeChild(document.getElementById("pauseWin"));
+									document.body.removeChild(document.body.firstElementChild);
+									makeWin("appRules", "How to use this program", "<p>Choose the chapter, POS, and other options you want to use  during your review. Then review until the session is complete. When you have reviewed all words, the vocabulary will reappear in later sessions when it is due again. Otherwise, it will not appear. Please do your best and contact Rina in class if you have any problems!</p>");
+									appForm();
+									//TODO: DISPLAY ELEMENTS WITH .close CLASS
+									//document.body.firstElementChild.firstElementChild.style.visibility = "visible";
+								break;
+								case("endSession"):
+									document.body.removeChild(document.getElementById("reviewReview"));
+									makeWin("appRules", "How to use this program", "<p>Choose the chapter, POS, and other options you want to use  during your review. Then review until the session is complete. When you have reviewed all words, the vocabulary will reappear in later sessions when it is due again. Otherwise, it will not appear. Please do your best and contact Rina in class if you have any problems!</p>");
+									appForm();
+								break;
+								default:
+								break;
+							}
+						}
+						else if(e.target.classList.contains("close") && e.target.style.visibility!="hidden"){
+							if(document.body.firstElementChild.id == "warning" || document.body.firstElementChild.id == "paramForm" || document.body.firstElementChild.id == "appRules" || document.body.firstElementChild.id == "countdown"){
+								alert("Do you want to close this browser window/tab?");
+								//TODO: if yes, ASK IF WANT TO SAVE  PROGRESS
+							}
+							else if(document.body.firstElementChild.id == "pauseWin"){
+								document.body.removeChild(document.getElementById("pauseWin"));
+								//TODO: RESTART TIMER
+								//TODO: DISPLAY ELEMENTS WITH .close CLASS
+								document.body.firstElementChild.firstElementChild.style.visibility = "visible";
+							}
+							else{
+								document.body.firstElementChild.firstElementChild.style.visibility="hidden";
+								makeWin("pauseWin","Paused","<button id='continue'>Continue this review</button><button id='quit'>Quit this review</button>");
+								//TODO PAUSE TIMER
+								//UNDISPLAY ELEMENTS WITH .close CLASS
+							}
+						}
+						else{}
+					});
+				};
+				openRequest.onerror = function(e){
+					//console.log("ERROR: ");
+					//console.dir(e);
+				};
+			}
+			else{result;}
+			
+			function createData(e){
+				var transaction = db.transaction(["vocabs"],"readwrite");
+				var store = transaction.objectStore("vocabs");
+				var request;
+				for(var i = 1; i < vocabList.length; i++){
+					var item = {
+						type: undefined,
+						kana: undefined,
+						kanji: undefined,
+						meaning: undefined,
+						example: undefined,
+						chapter: undefined,
+						score: undefined,
+						created: new Date(),
+						updated: new Date(),
+						dueDate: null,
+						id: undefined
+					}
+					item.type = vocabList[i].type;
+					item.kana = vocabList[i].kana;
+					item.kanji = vocabList[i].kanji;
+					item.meaning = vocabList[i].meaning;
+					item.example = vocabList[i].example;
+					item.chapter = vocabList[i].chapter;
+					item.score = vocabList[i].score;
+					item.id = i;
+					
+					request = store.add(item);
+					request.onerror = function(e){
+						//console.log("Error! ", e.target.error.name);
+						alert("error loading vocab items: ",  e.target.error.name);
+					}
+					request.onsuccess = function(e){
+						//console.log("Added items!");
+						alert("added items " + e.target.result);
+					}
+				}
+			}
+			
+			function readData(e, item){
+				var key = item.id;
+				var transaction = db.transaction(["vocabs"], "readonly");
+				var store = transaction.objectStore("vocabs");
+				var objRead = store.get(key);
+				objRead.onsuccess = function(e){
+					var result = e.target.result;
+					console.dir(result);
+				}
+			}
+			function readAllData(e){
+				var transaction = db.transaction(["vocabs"], "readonly");
+				var store = transaction.objectStore("vocabs");
+				var cursor = store.openCursor();
+				cursor.onsuccess = function(e){
+					var result = e.target.result;
+					if(result){
+						if(result.value !== null){
+							dbList.push(result.value);
+							result.continue();
+						}
+						else{}
+					}
+				}
+			}
+			
+			function updateData(e, obj){
+				//console.log(obj + "WAAAAAAAAAA");
+				var item = {
+					type: undefined,
+					kana: undefined,
+					kanji: undefined,
+					meaning: undefined,
+					example: undefined,
+					chapter: undefined,
+					score: undefined,
+					created: undefined,
+					updated: new Date,
+					dueDate: null,
+					id: undefined
+				}
+				item.type = obj.type;
+				item.kana = obj.kana;
+				item.kanji = obj.kanji;
+				item.meaning = obj.meaning;
+				item.example = obj.example;
+				item.chapter = obj.chapter;
+				item.score = obj.score;
+				item.created = obj.created;
+				item.dueDate = obj.dueDate;
+				item.id = obj.id;
+				
+				var transaction = db.transaction(["vocabs"], "readwrite");
+				var store = transaction.objectStore("vocabs");
+				
+				objUpdate = store.put(item);
+				objUpdate.onsuccess = function(e){
+					var result = e.target.result;
+					//console.dir(result);
+				}
+			}
+			function deleteData(e, id){
+				var itemID = id;
+				var transaction = db.transaction(["vocabs"],"readwrite");
+				var deleteItem = transaction.objectStore("vocabs").delete(itemID);
+				//console.log("Object " + itemID + " deleted from database.");
+			}	
+		}, false);
+		</script>
+	</body>
+</html>
