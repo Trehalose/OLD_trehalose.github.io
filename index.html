@@ -6,7 +6,10 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<meta name="language" content="english" />
 	<meta name="author" content="Rina the Bane" />
-	<link href='http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Puritan:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Puritan:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/regular.css" integrity="sha384-hCIN6p9+1T+YkCd3wWjB5yufpReULIPQ21XA/ncf3oZ631q2HEhdC7JgKqbk//4+" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/fontawesome.css" integrity="sha384-sri+NftO+0hcisDKgr287Y/1LVnInHJ1l+XC7+FOabmTTIK0HnE2ID+xxvJ21c5J" crossorigin="anonymous" />
+
 	<style>
 	/*UTILITIES*/
 		*{
@@ -215,7 +218,6 @@
 		}
 		.soc-med{
 			background-color: #6a4d2f;
-			background-image: url('https://www.dropbox.com/s/t7ot4e5xvxfyy7n/soc_med.svg?raw=1');
 			background-size: 500% 100%;
 			width: 50px;
 			height: 50px;
@@ -231,6 +233,18 @@
 			-webkit-transform: rotate(3deg);
 			transform: rotate(3deg);
 			background-color: #cfac87;
+		}
+		.soc-med a {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			text-decoration: none;
+		}
+		.soc-med i {
+			text-align: center;
+			color: #ecffeb;
+			font-size: 50px;
 		}
 	/*NAVIGATION*/
 	/*ANIMATIONS*/
@@ -676,11 +690,11 @@
 			</p>
 			<h3>Find this phat &amp; sassy she-beast:</h3>
 			<ul>
-				<li><a href="https://twitter.com/TheGreatYonR"><img class="soc-med" style="background-position: 0px 0;" src="https://trehalose.github.io/assets/trans_img.gif" alt="At Twitter" title="At Twitter" /></a></li>
-				<li><a href="https://thegreatyonr.deviantart.com"><img class="soc-med" style="background-position: 25% 0;" src="https://trehalose.github.io/assets/trans_img.gif" alt="At Deviantart" title="At Deviantart" /></a></li>
-				<li><a href="https://www.youtube.com/user/TheRinaissanceMan"><img class="soc-med" style="background-position: 50% 0;" src="https://trehalose.github.io/assets/trans_img.gif" alt="At Youtube" title="At Youtube" /></a></li>
-				<li><a href="https://soundcloud.com/thegreatyonr"><img class="soc-med" style="background-position: 75% 0;" src="https://trehalose.github.io/assets/trans_img.gif" alt="At Soundcloud" title="At Soundcloud" /></a></li>
-				<li><a href="https://www.linkedin.com/in/rinathebane"><img class="soc-med" style="background-position: 100% 0;" src="https://trehalose.github.io/assets/trans_img.gif" alt="At LinkedIn" title="At LinkedIn" /></a></li>
+				<li class="soc-med"><a href="https://twitter.com/TheGreatYonR" title="At Twitter"><i class="fas fa-twitter"></i></a></li>
+				<li class="soc-med"><a href="https://thegreatyonr.deviantart.com" title="At Deviantart"><i class="fas fa-deviantart"></i></a></li>
+				<li class="soc-med"><a href="https://www.youtube.com/user/TheRinaissanceMan" title="At Youtube"><i class="fas fa-youtube"></i></a></li>
+				<li class="soc-med"><a href="https://soundcloud.com/thegreatyonr" title="At Soundcloud"><i class="fas fa-soundcloud"></i></a></li>
+				<li class="soc-med"><a href="https://www.linkedin.com/in/rinathebane" title="At LinkedIn"><i class="fas fa-linkedin-in"></i></a></li>
 			</ul>
 		</div>
 		<span class="float-span"></span>
@@ -688,14 +702,14 @@
 	<script>
 		//Upon loading, following snippet randomly fills the #fun-fact element with a fun fact.
 		var facts = [
-			"She has a pet \"Lucky Bamboo\" named Misterさん.",
-			"Her pet plant Misterさん always wears sunglasses.",
 			"She used to do ceramics.",
 			"She is a high-five barbarian.",
-			"She is beloved at her local Taco Bell",
-			"She had an awesome 3-month battle with her local Taco Bell's manager. Ask her about it!",
+			"She is beloved at a local Taco Bell.",
+			"She had an awesome 3-month battle with a local Taco Bell's manager. Ask her about it!",
 			"She did some really fun &amp; weird things at/for the company Tofugu.",
-			"She sometimes plans absurd &amp; intricate surprises to mess with people"
+			"She sometimes plans absurd &amp; intricate surprises to mess with people.",
+			"She has successfully competed with Startup Bus as 2 of the 3 competetive roles: Hipster & Hacker. One more to go!~",
+			"She goes to a rock climbing gym."
 		];
 		var randomIndex = Math.floor(Math.random()*facts.length);
 		var factoid = document.getElementById("fun-fact");
